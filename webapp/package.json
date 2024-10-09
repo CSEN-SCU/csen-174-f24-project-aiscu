@@ -1,0 +1,15 @@
+{
+    "name": "webapp",
+    "version": "0.0.1",
+    "description": "my webapp using socket.io",
+    "type": "module",
+    "dependencies": {
+        "@pinecone-database/pinecone": "^3.0.3",
+        "@socket.io/cluster-adapter": "^0.2.2",
+        "express": "^4.21.0",
+        "openai": "^4.67.2",
+        "socket.io": "^4.8.0",
+        "sqlite": "^5.1.1",
+        "sqlite3": "^5.1.7"
+    }
+}
