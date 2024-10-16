@@ -10,11 +10,72 @@ from django.utils import timezone
 
 
 
-openai_api_key = #put your Openai API key here 
+openai_api_key = "" #put your Openai API key here 
 openai.api_key = openai_api_key
 
 
 def ask_openai(message):
+    # Needs to be run only once as a setup
+    import os
+    os.environ["OPENAI_API_KEY"] = "" #OPENAI API KEY#
+
+    from pinecone import Pinecone
+    pc = Pinecone(api_key="") #PINECONE API KEY#
+
+    from langchain_pinecone import PineconeVectorStore
+    from pinecone import ServerlessSpec
+    from langchain.chains import RetrievalQA
+    from langchain.llms import OpenAI
+    from langchain_openai import OpenAIEmbeddings
+    
+    embeddings = OpenAIEmbeddings(model="text-embedding-3-large")
+    llm=OpenAI()
+
+    '''
+    # Run To Select/Swap Database
+    select = 0
+    while select != 1 and select != 2:
+    print("[1] Tutoring")
+    print("[2] Safety")
+    select = int(input("Which do you need help with?"))
+    if select == 2:
+    index_name = "safety-test-index"
+    elif select == 1:
+    index_name = "tutor-test-index"
+    '''
+    index_name = "langchain-test-index"  # change if desired
+    index = pc.Index(index_name)
+    docsearch = PineconeVectorStore(index=index, embedding=embeddings)
+
+    qa_with_sources = RetrievalQA.from_chain_type(llm=llm, chain_type="stuff", retriever=docsearch.as_retriever(), return_source_documents=True)
+
+    '''
+    # Run For User To Interact With Chatbot
+    while True:
+    query = input("What do you need help with?")
+    if query.lower() == "exit":
+        break
+    result = qa_with_sources({"query": query})
+    print(result["result"])
+    sources = [doc.metadata["source"] for doc in result["source_documents"]]
+    def split_https(entries):
+        result = []
+        for entry in entries:
+            parts = entry.split('https:')
+            for part in parts:
+                if part:
+                    result.append('https:' + part)
+        return result
+    sources = set(split_https(sources))
+    print(sources)
+    '''
+
+    import sys
+    query = sys.argv[1] #"I have a Math 11 midterm coming up. Is there any place I can get help?"#
+
+    result = qa_with_sources({"query": message})
+    return result["result"]
+'''
     response = openai.ChatCompletion.create(
         model="gpt-4",
         messages=[
@@ -24,6 +85,7 @@ def ask_openai(message):
     )
     answer = response.choices[0].message['content'].strip()  # Access message content correctly
     return answer
+'''
 
 
 # Create your views here.
