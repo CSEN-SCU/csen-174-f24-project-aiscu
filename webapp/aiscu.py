@@ -86,3 +86,54 @@ query = sys.argv[1] #"I have a Math 11 midterm coming up. Is there any place I c
 result = qa_with_sources({"query": query})
 print(result["result"])
 #print(result["source_documents"])
+
+'''
+# Needs to be run only once as a setup
+import os
+os.environ["OPENAI_API_KEY"] = "INSERT_OPENAI_API_KEY"
+
+from pinecone import Pinecone
+pc = Pinecone(api_key="INSERT_PINECONE_API_KEY")
+
+from langchain_pinecone import PineconeVectorStore
+from pinecone import ServerlessSpec
+from langchain.chains import RetrievalQA
+from langchain.llms import OpenAI
+
+embeddings = OpenAIEmbeddings(model="text-embedding-3-large")
+llm=OpenAI()
+
+# Run To Select/Swap Database
+select = 0
+while select != 1 and select != 2:
+  print("[1] Tutoring")
+  print("[2] Safety")
+  select = int(input("Which do you need help with?"))
+if select == 2:
+  index_name = "safety-test-index"
+elif select == 1:
+  index_name = "tutor-test-index"
+index = pc.Index(index_name)
+docsearch = PineconeVectorStore(index=index, embedding=embeddings)
+
+qa_with_sources = RetrievalQA.from_chain_type(llm=llm, chain_type="stuff", retriever=docsearch.as_retriever(), return_source_documents=True)
+
+# Run For User To Interact With Chatbot
+while True:
+  query = input("What do you need help with?")
+  if query.lower() == "exit":
+    break
+  result = qa_with_sources({"query": query})
+  print(result["result"])
+  sources = [doc.metadata["source"] for doc in result["source_documents"]]
+  def split_https(entries):
+      result = []
+      for entry in entries:
+          parts = entry.split('https:')
+          for part in parts:
+              if part:
+                  result.append('https:' + part)
+      return result
+  sources = set(split_https(sources))
+  print(sources)
+'''
