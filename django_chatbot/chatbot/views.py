@@ -31,7 +31,7 @@ def ask_openai(message):
     embeddings = OpenAIEmbeddings(model="text-embedding-3-large")
     llm=OpenAI()
 
-    '''
+    
     # Run To Select/Swap Database
     select = 0
     while select != 1 and select != 2:
@@ -39,11 +39,11 @@ def ask_openai(message):
     print("[2] Safety")
     select = int(input("Which do you need help with?"))
     if select == 2:
-    index_name = "safety-test-index"
+        index_name = "safety-test-index"
     elif select == 1:
-    index_name = "tutor-test-index"
-    '''
-    index_name = "langchain-test-index"  # change if desired
+        index_name = "tutor-test-index"
+    
+    #index_name = "langchain-test-index"  # change if desired
     index = pc.Index(index_name)
     docsearch = PineconeVectorStore(index=index, embedding=embeddings)
 
