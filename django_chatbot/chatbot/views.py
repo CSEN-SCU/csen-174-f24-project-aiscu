@@ -49,8 +49,9 @@ def ask_openai(message):
 
     qa_with_sources = RetrievalQA.from_chain_type(llm=llm, chain_type="stuff", retriever=docsearch.as_retriever(), return_source_documents=True)
 
-    '''
+    
     # Run For User To Interact With Chatbot
+    '''
     while True:
     query = input("What do you need help with?")
     if query.lower() == "exit":
@@ -69,11 +70,28 @@ def ask_openai(message):
     sources = set(split_https(sources))
     print(sources)
     '''
+    
 
     import sys
     query = sys.argv[1] #"I have a Math 11 midterm coming up. Is there any place I can get help?"#
 
     result = qa_with_sources({"query": message})
+
+
+    sources = [doc.metadata["source"] for doc in result["source_documents"]]
+    def split_https(entries):
+        result = []
+        for entry in entries:
+            parts = entry.split('https:')
+            for part in parts:
+                if part:
+                    result.append('https:' + part)
+        return result
+    sources = set(split_https(sources))
+
+    print(sources)
+
+    
     return result["result"]
 '''
     response = openai.ChatCompletion.create(
