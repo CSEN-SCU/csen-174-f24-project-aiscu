@@ -13,6 +13,105 @@ from django.utils import timezone
 openai_api_key = "" #put your Openai API key here 
 openai.api_key = openai_api_key
 
+'''
+# Needs to be run only once as a setup
+import os
+# os.environ["OPENAI_API_KEY"] = "INSERT_OPENAI_API_KEY"
+from pinecone import Pinecone
+# pc = Pinecone(api_key="INSERT_PINECONE_API_KEY")
+from langchain_pinecone import PineconeVectorStore
+from pinecone import ServerlessSpec
+from langchain.chains import RetrievalQA
+from langchain.llms import OpenAI
+from langchain_core.messages import HumanMessage, AIMessage
+from langchain_openai import OpenAIEmbeddings
+from langchain.chains import ConversationalRetrievalChain
+from langchain.memory import ConversationBufferMemory
+from langchain_core.prompts import MessagesPlaceholder
+from langchain_core.messages import HumanMessage, AIMessage
+from langchain.chains.history_aware_retriever import create_history_aware_retriever
+from langchain.chains import create_retrieval_chain
+from langchain.chains.combine_documents import create_stuff_documents_chain
+from langchain_core.prompts import ChatPromptTemplate
+embeddings = OpenAIEmbeddings(model="text-embedding-3-large")
+llm=OpenAI()
+def split_https(entries):
+  result = []
+  for entry in entries:
+      parts = entry.split('https:')
+      for part in parts:
+          if part:
+              result.append('https:' + part)
+  return result
+def create_chain(vectorStore):
+    system_prompt = (
+        "You are an AI assistant designed to help students at Santa Clara University (SCU) navigate university resources, based on their personal needs." 
+        "Your goal is to provide quick, clear, and accurate guidance by suggesting relevant SCU resources."
+        "Be friendly, and approachable."
+        "Provide specific contacts whenever possible."
+        "Answer based on this context: {context}"
+    )
+    prompt = ChatPromptTemplate.from_messages([
+        ("system", system_prompt),
+        MessagesPlaceholder(variable_name="chat_history"),
+        ("user", "{input}")
+    ])
+    chain = create_stuff_documents_chain(
+        llm=llm,
+        prompt=prompt
+    )
+    retriever = vectorStore.as_retriever(search_kwargs={"k": 3})
+    retriever_prompt = ChatPromptTemplate.from_messages([
+        MessagesPlaceholder(variable_name="chat_history"),
+        ("user", "{input}"),
+        ("user", "Given the above conversation, generate a search query to look up in order to get information relevant to the conversation")
+    ])
+    history_aware_retriever = create_history_aware_retriever(
+        llm=llm,
+        retriever=retriever,
+        prompt=retriever_prompt
+    )
+    retrieval_chain = create_retrieval_chain(
+        history_aware_retriever,
+        chain
+    )
+    return retrieval_chain
+# Run To Select/Swap Database
+# Potential DevOp is tracking number of times an index/specialized chatbot is used
+select = 0
+while select != 1 and select != 2:
+  print("[1] Tutoring")
+  print("[2] Safety")
+  select = int(input("Which do you need help with?"))
+if select == 2:
+  index_name = "safety-test-index"
+elif select == 1:
+  index_name = "tutor-test-index"
+index = pc.Index(index_name)
+docsearch = PineconeVectorStore(index=index, embedding=embeddings)
+# Run For User To Interact With Chatbot
+chat_history = []
+chain = create_chain(docsearch)
+while True:
+  query = input("What do you need help with?")
+  if query.lower() == "exit":
+    break
+    # Passes User_Request to OpenAI
+    # DevOp that can be measured is time before this line & time after
+  result = chain.invoke({
+        "chat_history": chat_history,
+        "input": query,
+  })
+  print(result["answer"])
+  sources = [doc.metadata["source"] for doc in result["context"]]
+  sources = set(split_https(sources))
+  print(sources)
+  chat_history.append(HumanMessage(content=query))
+  chat_history.append(AIMessage(content=result["answer"]))
+# Outputs number of user messages + number of chatbot message
+# DevOp that we try to minimize
+print(len(chat_history))
+'''
 
 def ask_openai(message, request):
     # Needs to be run only once as a setup
