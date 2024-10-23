@@ -14,7 +14,7 @@ openai_api_key = "" #put your Openai API key here
 openai.api_key = openai_api_key
 
 
-def ask_openai(message):
+def ask_openai(message, request):
     # Needs to be run only once as a setup
     import os
     os.environ["OPENAI_API_KEY"] = "" #OPENAI API KEY#
@@ -31,19 +31,19 @@ def ask_openai(message):
     embeddings = OpenAIEmbeddings(model="text-embedding-3-large")
     llm=OpenAI()
 
-    
     # Run To Select/Swap Database
-    select = 0
-    while select != 1 and select != 2:
-        print("[1] Tutoring")
-        print("[2] Safety")
-        select = int(input("Which do you need help with?"))
-        if select == 2:
-            index_name = "safety-test-index"
-        elif select == 1:
-            index_name = "tutor-test-index"
-    
+    # select = 0
+    # while select != 1 and select != 2:
+    #     print("[1] Tutoring")
+    #     print("[2] Safety")
+    #     select = int(input("Which do you need help with?"))
+    #     if select == 2:
+    #         index_name = "safety-test-index"
+    #     elif select == 1:
+    #         index_name = "tutor-test-index"
+   
     #index_name = "langchain-test-index"  # change if desired
+    index_name = request.session.get('index') #(wanted, default fallback)
     index = pc.Index(index_name)
     docsearch = PineconeVectorStore(index=index, embedding=embeddings)
 
@@ -113,13 +113,17 @@ def chatbot(request):
 
     if request.method == 'POST':
         message = request.POST.get('message')
-        response = ask_openai(message)
+        response = ask_openai(message, request)
 
         chat = Chat(user=request.user, message=message, response=response, created_at=timezone.now())
         chat.save()
         return JsonResponse({'message': message, 'response': response})
     return render(request, 'chatbot.html', {'chats': chats})
 
+def index(request):
+    if request.method == 'POST':
+        request.session['index'] = request.POST.get('message')
+    return redirect('chatbot')
 
 def login(request):
     if request.method == 'POST':
