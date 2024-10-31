@@ -9,6 +9,9 @@ from django.contrib.auth.models import User
 from .models import Chat
 from django.utils import timezone
 
+#for serializing arrays
+import json
+#
 
 openai_api_key = ""  # Your OpenAI API key here 
 openai.api_key = openai_api_key
@@ -21,27 +24,121 @@ def ask_openai(message, request):
     pc = Pinecone(api_key="")  # PINECONE API KEY
 
     from langchain_pinecone import PineconeVectorStore
-    from langchain.chains import RetrievalQA
-    from langchain_community.llms import OpenAI
+    from pinecone import ServerlessSpec
+    from langchain.llms import OpenAI
     from langchain_openai import OpenAIEmbeddings
+
+    #for chat history
+    from langchain_core.messages import HumanMessage, AIMessage
+    from langchain.chains import ConversationalRetrievalChain
+    from langchain.memory import ConversationBufferMemory
+    from langchain_core.prompts import MessagesPlaceholder
+    from langchain.chains.history_aware_retriever import create_history_aware_retriever
+    from langchain.chains import create_retrieval_chain
+    from langchain.chains.combine_documents import create_stuff_documents_chain
+    from langchain_core.prompts import ChatPromptTemplate
+    #
+    #for DevOp measurements
+    import time
+    #
     
     embeddings = OpenAIEmbeddings(model="text-embedding-3-large")
-    llm = OpenAI()
-
-    index_name = request.session.get('index')  
+    llm=OpenAI()
+    
+    def split_https(entries):
+        result = []
+        for entry in entries:
+            parts = entry.split('https:')
+            for part in parts:
+                if part:
+                    result.append('https:' + part)
+        return result
+    
+    # Run To Select/Swap Database
+    # Potential DevOp is tracking number of times an index/specialized chatbot is used
+    index_name = request.session.get('index') #(wanted, default fallback)
     index = pc.Index(index_name)
+
+    #get respective running counters, update, store in session variable
+
+    def create_chain(vectorStore):
+        system_prompt = (
+            "You are an AI assistant designed to help students at Santa Clara University (SCU) navigate university resources, based on their personal needs." 
+            "Your goal is to provide quick, clear, and accurate guidance by suggesting relevant SCU resources."
+            "Be friendly, and approachable."
+            "Provide specific contacts whenever possible."
+            "Answer based on this context: {context}"
+        )
+        prompt = ChatPromptTemplate.from_messages([
+            ("system", system_prompt),
+            MessagesPlaceholder(variable_name="chat_history"),
+            ("user", "{input}")
+        ])
+        chain = create_stuff_documents_chain(
+            llm=llm,
+            prompt=prompt
+        )
+        retriever = vectorStore.as_retriever(search_kwargs={"k": 3})
+        retriever_prompt = ChatPromptTemplate.from_messages([
+            MessagesPlaceholder(variable_name="chat_history"),
+            ("user", "{input}"),
+            ("user", "Given the above conversation, generate a search query to look up in order to get information relevant to the conversation")
+        ])
+        history_aware_retriever = create_history_aware_retriever(
+            llm=llm,
+            retriever=retriever,
+            prompt=retriever_prompt
+        )
+        retrieval_chain = create_retrieval_chain(
+            history_aware_retriever,
+            chain
+        )
+        return retrieval_chain
+
     docsearch = PineconeVectorStore(index=index, embedding=embeddings)
 
-    qa_with_sources = RetrievalQA.from_chain_type(
-        llm=llm, chain_type="stuff", retriever=docsearch.as_retriever(), return_source_documents=True
-    )
+    # Run For User To Interact With Chatbot
+    chat_history = json.loads(request.session.get('chat_history', '[]'))
+    chain = create_chain(docsearch)
 
-    result = qa_with_sources({"query": message})
+    deserial_chat_history = [HumanMessage(content=j) if i%2 else AIMessage(content=j) for i,j in enumerate(chat_history)]
+ 
+    # Passes User_Request to OpenAI
+    # DevOp that can be measured is time before this line & time after
+    begin = time.time()
+    result = chain.invoke({
+            "chat_history": deserial_chat_history,
+            "input": message,
+    })
+    end = time.time()
 
-    sources = [doc.metadata["source"] for doc in result["source_documents"][:3]]  # Limit to top 3 sources
-    formatted_sources = [{"text": f"Source {i+1}", "url": source} for i, source in enumerate(sources)]
+    print(f"Time for response time: {end - begin}")
+    #get running average for chatbot response time => session
 
-    return result["result"], formatted_sources
+    print(result["answer"])
+    sources = [doc.metadata["source"] for doc in result["context"]]
+    sources = set(split_https(sources))
+    print(sources)
+
+    chat_history.append(message)
+    chat_history.append(result["answer"])
+
+    # Outputs number of user messages + number of chatbot message
+    # DevOp that we try to minimize
+    print(len(chat_history)) # => store lengths in db, chat_history first in session, otherwise length always 2
+    request.session['chat_history'] = json.dumps(chat_history)
+    # print(HumanMessage(content=message))
+    # print(type(HumanMessage(content=message)))
+    # print(AIMessage(content=result["answer"]))
+    # print(type(AIMessage(content=result["answer"]))) 
+    print(type(result["answer"]))
+    print(type(sources))
+    return result["answer"], json.dumps(list(sources))
+
+    # sources = [doc.metadata["source"] for doc in result["source_documents"]]  # Limit to top 3 sources
+    # formatted_sources = [{"text": f"Source {i+1}", "url": source} for i, source in enumerate(sources)]
+    # print(sources)
+    # return result["result"], formatted_sources
 
 
 # Chatbot view to handle user interaction
@@ -51,6 +148,9 @@ def chatbot(request):
     if request.method == 'POST':
         message = request.POST.get('message')
         response, sources = ask_openai(message, request)
+
+        sources = json.loads(sources)
+        print(sources)
 
         chat = Chat(user=request.user, message=message, response=response, created_at=timezone.now())
         chat.save()

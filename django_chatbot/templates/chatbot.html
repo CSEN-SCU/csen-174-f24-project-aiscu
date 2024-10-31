@@ -161,6 +161,7 @@
       .then((data) => {
         const response = data.response;
         const sources = data.sources;
+        console.log(sources)
 
         const messageItem = document.createElement("li");
         messageItem.classList.add("message", "received");
@@ -175,8 +176,9 @@
             ${sources.length ? `
             <div class="message-sources">
                 <b>Sources:</b>
-                <ul>
-                  ${sources.map(source => `<li class="source-item"><a href="${source.url}" target="_blank">${source.text}</a></li>`).join("")}
+                <br>
+                <ul style="list-style-type: none;">
+                ${sources.map((source, idx) => `<li><a href="${source}" target="_blank" class="badge badge-primary"><span class="badge badge-pill badge-secondary">${idx}</span> ${source}</a></li>`).join("")}
                 </ul>
             </div>` : ''}
         </div>
