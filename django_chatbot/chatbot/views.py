@@ -56,7 +56,7 @@ def ask_openai(message, request):
     
     # Run To Select/Swap Database
     # Potential DevOp is tracking number of times an index/specialized chatbot is used
-    index_name = request.session.get('index') #(wanted, default fallback)
+    index_name = request.session.get('index','langchain-test-index') #(wanted, default fallback)
     index = pc.Index(index_name)
 
     #get respective running counters, update, store in session variable
@@ -121,7 +121,7 @@ def ask_openai(message, request):
     print(sources)
 
     chat_history.append(message)
-    chat_history.append(result["answer"])
+    chat_history.append(result["answer"].split(":")[1])
 
     # Outputs number of user messages + number of chatbot message
     # DevOp that we try to minimize
@@ -133,7 +133,7 @@ def ask_openai(message, request):
     # print(type(AIMessage(content=result["answer"]))) 
     print(type(result["answer"]))
     print(type(sources))
-    return result["answer"], json.dumps(list(sources))
+    return result["answer"].split(":")[1], json.dumps(list(sources))
 
     # sources = [doc.metadata["source"] for doc in result["source_documents"]]  # Limit to top 3 sources
     # formatted_sources = [{"text": f"Source {i+1}", "url": source} for i, source in enumerate(sources)]
@@ -165,8 +165,13 @@ def chatbot(request):
 def index(request):
     if request.method == 'POST':
         request.session['index'] = request.POST.get('message')
+        request.session['chat_history'] = '[]'
     return redirect('chatbot')
 
+def clear(request):
+    if request.method == 'GET':
+        Chat.objects.all().delete()
+    return redirect('chatbot')
 
 # Other unchanged views...
 def login(request):

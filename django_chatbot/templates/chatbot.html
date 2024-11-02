@@ -43,8 +43,9 @@
     <div class="card-header text-white">Chat</div>
     {% if user.is_authenticated %}
     <div class="card-header text-white">
-      <b>Welcome, {{user.username}}</b>
-      <a style="color: yellow" href="home">Logout</a>
+      <b>Welcome! Ask me anything.</b>
+      <!-- <b>Welcome, {{user.username}}</b> -->
+      <!-- <a style="color: yellow" href="home">Logout</a> -->
     </div>
     {% else %}
     <div class="card-header bg-primary text-white">
@@ -100,7 +101,7 @@
       <input type="text" class="form-control message-input" placeholder="Type your message..." />
       <div class="input-group-append">
         <button id="send-btn" type="submit" class="btn btn-primary btn-send">Send</button>
-        <button id="default-index" type="button" class="btn btn-success btn-send">Default</button>
+        <button id="default-index" type="button" class="btn btn-success btn-send" disabled>Default</button>
         <button id="safety-index" type="button" class="btn btn-success btn-send">Safety</button>
         <button id="tutor-index" type="button" class="btn btn-success btn-send">Tutor</button>
       </div>
@@ -174,12 +175,8 @@
                 ${response}
             </div>
             ${sources.length ? `
-            <div class="message-sources">
-                <b>Sources:</b>
-                <br>
-                <ul style="list-style-type: none;">
-                ${sources.map((source, idx) => `<li><a href="${source}" target="_blank" class="badge badge-primary"><span class="badge badge-pill badge-secondary">${idx}</span> ${source}</a></li>`).join("")}
-                </ul>
+            <div class="message-sources" style="display:flex;flex-direction:row;flex-wrap:wrap;">
+                ${sources.map((source, idx) => `<a href="${source}" target="_blank" class="badge badge-primary"><span class="badge badge-pill badge-light">${idx}</span> ${source}</a>`).join("")}
             </div>` : ''}
         </div>
           `;
@@ -231,5 +228,25 @@
       }),
     });
   });
+
+  window.addEventListener('beforeunload', (event) => {
+    const message = "langchain-test-index";
+    fetch("index", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        csrfmiddlewaretoken: document.querySelector("[name=csrfmiddlewaretoken]").value,
+        message: message,
+      }),
+    });
+  });
+
+  window.addEventListener('beforeunload', (event) => {
+    fetch("clear", {
+      method: "GET",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    });
+  });
+
 </script>
 {% endblock %}
