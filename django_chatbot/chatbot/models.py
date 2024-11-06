@@ -10,3 +10,16 @@ class Chat(models.Model):
 
     def __str__(self):
         return f'{self.user.username}: {self.message}'
+
+#DevOps
+class Counters(models.Model):
+    counter = models.IntegerField(default=0)
+    index_name = models.TextField(unique=True)
+
+class AvgResponseTime(models.Model):
+    time = models.FloatField(default=0)
+    total = models.IntegerField(default=0)
+
+class AvgChatLength(models.Model):
+    length = models.IntegerField(default=0)
+    total = models.IntegerField(default=0)

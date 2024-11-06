@@ -116,6 +116,7 @@
   const defaultIndex = document.getElementById("default-index");
   const safetyIndex = document.getElementById("safety-index");
   const tutorIndex = document.getElementById("tutor-index");
+  const sendButton = document.getElementById("send-btn");
 
   function toggle() {
     const buttons = messageForm.querySelectorAll("button");
@@ -129,7 +130,6 @@
 
   messageForm.addEventListener("submit", (event) => {
     event.preventDefault();
-
     const message = messageInput.value.trim();
     if (message.length === 0) {
       return;
@@ -149,6 +149,21 @@
     messagesList.appendChild(messageItem);
 
     messageInput.value = "";
+
+    sendButton.toggleAttribute('disabled');
+    const loader = document.createElement("li");
+    //loader.classList.add("message", "received");
+    loader.innerHTML = `
+    <div class="message-text">
+        <div class="clearfix">
+          <div class="spinner-border float-right" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+    </div>
+      `;
+    messagesList.appendChild(loader);
+    loader.scrollIntoView();
 
     fetch("", {
       method: "POST",
@@ -180,7 +195,10 @@
             </div>` : ''}
         </div>
           `;
+        messagesList.removeChild(messagesList.lastElementChild);
         messagesList.appendChild(messageItem);
+        messageItem.scrollIntoView();
+        sendButton.toggleAttribute('disabled');
       });
   });
 

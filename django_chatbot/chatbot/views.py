@@ -1,5 +1,3 @@
-#new code
-
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 import openai
@@ -7,6 +5,9 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import auth
 from django.contrib.auth.models import User
 from .models import Chat
+from .models import Counters
+from .models import AvgResponseTime
+from .models import AvgChatLength
 from django.utils import timezone
 
 #for serializing arrays
@@ -55,11 +56,18 @@ def ask_openai(message, request):
         return result
     
     # Run To Select/Swap Database
-    # Potential DevOp is tracking number of times an index/specialized chatbot is used
     index_name = request.session.get('index','langchain-test-index') #(wanted, default fallback)
     index = pc.Index(index_name)
-
-    #get respective running counters, update, store in session variable
+    
+    # DevOp tracks number of times an index/specialized chatbot is used
+    prev_index_name = request.session['prev_index'] 
+    if prev_index_name != index_name:
+        obj, created = Counters.objects.get_or_create(
+            index_name=prev_index_name
+        )
+        obj.counter+=1
+        obj.save()
+        print(f"{prev_index_name}: {obj.counter}")
 
     def create_chain(vectorStore):
         system_prompt = (
@@ -101,19 +109,24 @@ def ask_openai(message, request):
     chat_history = json.loads(request.session.get('chat_history', '[]'))
     chain = create_chain(docsearch)
 
-    deserial_chat_history = [HumanMessage(content=j) if i%2 else AIMessage(content=j) for i,j in enumerate(chat_history)]
- 
+    deserial_chat_history = [HumanMessage(content=j) if i%2==0 else AIMessage(content=j) for i,j in enumerate(chat_history)]
+
     # Passes User_Request to OpenAI
-    # DevOp that can be measured is time before this line & time after
+    # DevOp measures the time before this line & time after
     begin = time.time()
     result = chain.invoke({
-            "chat_history": deserial_chat_history,
+            "chat_history": deserial_chat_history[-6:],
             "input": message,
     })
     end = time.time()
-
-    print(f"Time for response time: {end - begin}")
-    #get running average for chatbot response time => session
+    time_diff = end - begin
+    print(f"Time for response time: {time_diff}")
+    obj = AvgResponseTime.objects.first()
+    if obj is None:
+        obj = AvgResponseTime.objects.create(time=0,total=0)
+    obj.time = ((obj.time * obj.total) + (time_diff))/(obj.total+1)
+    obj.total += 1
+    obj.save()
 
     print(result["answer"])
     sources = [doc.metadata["source"] for doc in result["context"]]
@@ -121,25 +134,22 @@ def ask_openai(message, request):
     print(sources)
 
     chat_history.append(message)
-    chat_history.append(result["answer"].split(":")[1])
+    chat_history.append(result["answer"].split(":")[1] if ':' in result['answer'] else result['answer'])
+    request.session['chat_history'] = json.dumps(chat_history)
 
     # Outputs number of user messages + number of chatbot message
     # DevOp that we try to minimize
-    print(len(chat_history)) # => store lengths in db, chat_history first in session, otherwise length always 2
-    request.session['chat_history'] = json.dumps(chat_history)
-    # print(HumanMessage(content=message))
-    # print(type(HumanMessage(content=message)))
-    # print(AIMessage(content=result["answer"]))
-    # print(type(AIMessage(content=result["answer"]))) 
-    print(type(result["answer"]))
-    print(type(sources))
-    return result["answer"].split(":")[1], json.dumps(list(sources))
+    length = len(chat_history)
+    if prev_index_name != index_name:
+        obj = AvgChatLength.objects.first()
+        if obj is None:
+            obj = AvgChatLength.objects.create(length=0,total=0)
+        obj.length = ((obj.length * obj.total) + (length))/(obj.total+1)
+        obj.total += 1
+        obj.save()
+        print(f"Current chat length: {length}")
 
-    # sources = [doc.metadata["source"] for doc in result["source_documents"]]  # Limit to top 3 sources
-    # formatted_sources = [{"text": f"Source {i+1}", "url": source} for i, source in enumerate(sources)]
-    # print(sources)
-    # return result["result"], formatted_sources
-
+    return result["answer"].split(":")[1] if ':' in result['answer'] else result['answer'], json.dumps(list(sources))
 
 # Chatbot view to handle user interaction
 def chatbot(request):
@@ -150,7 +160,7 @@ def chatbot(request):
         response, sources = ask_openai(message, request)
 
         sources = json.loads(sources)
-        print(sources)
+        #print(sources)
 
         chat = Chat(user=request.user, message=message, response=response, created_at=timezone.now())
         chat.save()
@@ -164,6 +174,7 @@ def chatbot(request):
 # Index function to set the selected index
 def index(request):
     if request.method == 'POST':
+        request.session['prev_index'] = request.session.get('index','langchain-test-index')
         request.session['index'] = request.POST.get('message')
         request.session['chat_history'] = '[]'
     return redirect('chatbot')
