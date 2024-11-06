@@ -8,4 +8,6 @@ urlpatterns = [
     path('logout', views.logout, name='logout'),
     path('home', views.home, name='home'),
     path('index', views.index, name='index'),
+    path('clear', views.clear, name='clear'),
+    path('chatbot/', views.chatbot, name='chatbot'),
 ]
