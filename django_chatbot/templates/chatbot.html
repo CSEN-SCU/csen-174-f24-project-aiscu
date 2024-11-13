@@ -100,44 +100,52 @@
     <div class="input-group">
       <input type="text" class="form-control message-input" placeholder="Type your message..." />
       <div class="input-group-append">
-        <button id="send-btn" type="submit" class="btn btn-primary btn-send">Send</button>
+        <button id="send-btn" type="submit" class="btn btn-primary btn-send">
+          <i class="fas fa-arrow-up"></i>
+        </button>
         <button id="default-index" type="button" class="btn btn-success btn-send" disabled>Default</button>
-        <button id="safety-index" type="button" class="btn btn-success btn-send">Safety</button>
-        <button id="tutor-index" type="button" class="btn btn-success btn-send">Tutor</button>
+        <button id="safety-index" type="button" class="btn btn-success btn-send">
+          <i class="fas fa-shield-alt"></i> <!-- Replace with your desired icon class -->
+          Safety
+        </button>
+        <button id="tutor-index" type="button" class="btn btn-success btn-send">
+          <i class="fas fa-user"></i>
+          Tutor
+        </button>
+        
       </div>
     </div>
   </form>
 </div>
-
 <script>
   const messagesList = document.querySelector(".messages-list");
   const messageForm = document.querySelector(".message-form");
   const messageInput = document.querySelector(".message-input");
-  const defaultIndex = document.getElementById("default-index");
-  const safetyIndex = document.getElementById("safety-index");
-  const tutorIndex = document.getElementById("tutor-index");
 
-  function toggle() {
-    const buttons = messageForm.querySelectorAll("button");
-    buttons.forEach((button) => {
-      if (button.id === "send-btn") return;
-      if (button.disabled) {
-        button.removeAttribute("disabled");
-      }
-    });
+  // Save chat history to sessionStorage
+  function saveChatToSession() {
+    sessionStorage.setItem('chatHistory', messagesList.innerHTML);
   }
 
+  // Load chat history from sessionStorage on page load
+  document.addEventListener("DOMContentLoaded", () => {
+    const savedChatHistory = sessionStorage.getItem('chatHistory');
+    if (savedChatHistory) {
+      messagesList.innerHTML = savedChatHistory;
+    }
+  });
+
+  // Handle message submission
   messageForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
     const message = messageInput.value.trim();
-    if (message.length === 0) {
-      return;
-    }
+    if (message.length === 0) return;
 
-    const messageItem = document.createElement("li");
-    messageItem.classList.add("message", "sent");
-    messageItem.innerHTML = `
+    // Display user message
+    const userMessageItem = document.createElement("li");
+    userMessageItem.classList.add("message", "sent");
+    userMessageItem.innerHTML = `
         <div class="message-text">
             <div class="message-sender">
                 <b>You</b>
@@ -146,10 +154,13 @@
                 ${message}
             </div>
         </div>`;
-    messagesList.appendChild(messageItem);
+    messagesList.appendChild(userMessageItem);
+    saveChatToSession();
 
+    // Clear input field
     messageInput.value = "";
 
+    // Send message to the server and handle AI response
     fetch("", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -158,151 +169,29 @@
         message: message,
       }),
     })
-      .then((response) => response.json())
-      .then((data) => {
-        const response = data.response;
-        const sources = data.sources;
-        console.log(sources)
-
-        const messageItem = document.createElement("li");
-        messageItem.classList.add("message", "received");
-        messageItem.innerHTML = `
+    .then((response) => response.json())
+    .then((data) => {
+      const aiMessageItem = document.createElement("li");
+      aiMessageItem.classList.add("message", "received");
+      aiMessageItem.innerHTML = `
         <div class="message-text">
             <div class="message-sender">
               <b>AI Chatbot</b>
             </div>
             <div class="message-content">
-                ${response}
-            </div>
-            ${sources.length ? `
-            <div class="message-sources" style="display:flex;flex-direction:row;flex-wrap:wrap;">
-                ${sources.map((source, idx) => `<a href="${source}" target="_blank" class="badge badge-primary"><span class="badge badge-pill badge-light">${idx}</span> ${source}</a>`).join("")}
-            </div>` : ''}
-        </div>
-          `;
-        messagesList.appendChild(messageItem);
-      });
-  });
-
-  defaultIndex.addEventListener("click", (event) => {
-    event.preventDefault();
-    toggle();
-    defaultIndex.toggleAttribute("disabled");
-    const message = "langchain-test-index";
-    fetch("index", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams({
-        csrfmiddlewaretoken: document.querySelector("[name=csrfmiddlewaretoken]").value,
-        message: message,
-      }),
-    });
-  });
-
-  safetyIndex.addEventListener("click", (event) => {
-    event.preventDefault();
-    toggle();
-    safetyIndex.toggleAttribute("disabled");
-    const message = "safety-test-index";
-    fetch("index", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams({
-        csrfmiddlewaretoken: document.querySelector("[name=csrfmiddlewaretoken]").value,
-        message: message,
-      }),
-    });
-  });
-
-  tutorIndex.addEventListener("click", (event) => {
-    event.preventDefault();
-    toggle();
-    tutorIndex.toggleAttribute("disabled");
-    const message = "tutor-test-index";
-    fetch("index", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams({
-        csrfmiddlewaretoken: document.querySelector("[name=csrfmiddlewaretoken]").value,
-        message: message,
-      }),
-    });
-  });
-
-  window.addEventListener('beforeunload', (event) => {
-    const message = "langchain-test-index";
-    fetch("index", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams({
-        csrfmiddlewaretoken: document.querySelector("[name=csrfmiddlewaretoken]").value,
-        message: message,
-      }),
-    });
-  });
-
-  window.addEventListener('beforeunload', (event) => {
-    fetch("clear", {
-      method: "GET",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    });
-  });
-
-  {/* new snippet*/}
-  function submitPrompt() {
-    const userPrompt = document.getElementById('userPrompt').value;
-    if (userPrompt.trim() !== '') {
-      window.location.href = `/chatbot?prompt=${encodeURIComponent(userPrompt)}`;
-    }
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const prompt = urlParams.get('prompt');
-    if (prompt) {
-      // Display the user's initial prompt on the page
-      const messagesList = document.querySelector('.messages-list');
-      const userMessageItem = document.createElement('li');
-      userMessageItem.classList.add('message', 'sent');
-      userMessageItem.innerHTML = `
-        <div class="message-text">
-          <div class="message-sender">
-            <b>You</b>
-          </div>
-          <div class="message-content">
-            ${prompt}
-          </div>
-        </div>`;
-      messagesList.appendChild(userMessageItem);
-
-      // Send the prompt to the chatbot backend
-      fetch('', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams({
-          csrfmiddlewaretoken: document.querySelector('[name=csrfmiddlewaretoken]').value,
-          message: prompt,
-        }),
-      })
-        .then(response => response.json())
-        .then(data => {
-          const responseMessageItem = document.createElement('li');
-          responseMessageItem.classList.add('message', 'received');
-          responseMessageItem.innerHTML = `
-            <div class="message-text">
-              <div class="message-sender">
-                <b>AI Chatbot</b>
-              </div>
-              <div class="message-content">
                 ${data.response}
-              </div>
-            </div>`;
-          messagesList.appendChild(responseMessageItem);
-        });
-    }
+            </div>
+            ${data.sources && data.sources.length ? `
+            <div class="message-sources" style="display: flex; gap: 10px;">
+              <b>Sources:</b>
+              ${data.sources.map(source => `<a href="${source}" target="_blank">${source}</a>`).join(" ")}
+            </div>` : ''}
+        </div>`;
+      messagesList.appendChild(aiMessageItem);
+      saveChatToSession();
+    });
   });
-  
-  {/* end of snippet */}
-
 </script>
+
 {% endblock %}
+
