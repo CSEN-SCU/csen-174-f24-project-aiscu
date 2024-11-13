@@ -9,13 +9,14 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: #f9f9f9;
+    background-color: #800020;
   }
 
   .title {
     font-size: 2.5rem;
     font-weight: bold;
     margin-bottom: 2rem;
+    color: white;
   }
 
   .input-container {
@@ -80,7 +81,9 @@
   <div class="title">What can I help with?</div>
   <div class="input-container">
     <input type="text" class="input-prompt" placeholder="Type your prompt here..." id="userPrompt">
-    <button class="btn-search" onclick="submitPrompt()">Search</button>
+    <button class="btn-search" onclick="submitPrompt()">
+     <i class="fas fa-search"> </i>
+    </button>
   </div>
   <div class="options-container">
     <button class="option-button btn-code">Code</button>
