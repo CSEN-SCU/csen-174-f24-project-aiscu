@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import JsonResponse
 import openai
 from .models import Counters
-#from .models import AvgResponseTime
+from .models import AvgResponseTime
 from .models import AvgChatLength
 from django.utils import timezone
 
@@ -96,36 +96,29 @@ def ask_openai(chat_history, message, request):
     chain = create_chain(docsearch)
 
     # Run For User To Interact With Chatbot
-    #chat_history = json.loads(request.session.get('chat_history', '[]'))
     deserial_chat_history = [HumanMessage(content=j) if i%2==0 else AIMessage(content=j) for i,j in enumerate(chat_history)]
 
     # Passes User_Request to OpenAI
     # DevOp measures the time before this line & time after
     begin = time.time()
     result = chain.invoke({
-            "chat_history": deserial_chat_history, #deserial_chat_history[-6:],
+            "chat_history": deserial_chat_history,
             "input": message,
     })
     end = time.time()
     time_diff = end - begin
-    # old_obj = AvgResponseTime.objects.last()
-    # if old_obj is None:
-    #     old_obj = obj = AvgResponseTime.objects.create()
-    # else:
-    #     obj = AvgResponseTime.objects.create()
-    # obj.time = ((old_obj.time * old_obj.total) + (time_diff))/(old_obj.total+1)
-    # obj.total = old_obj.total + 1
-    # obj.save()
+    old_obj = AvgResponseTime.objects.last()
+    if old_obj is None:
+        old_obj = obj = AvgResponseTime.objects.create()
+    else:
+        obj = AvgResponseTime.objects.create()
+    obj.time = ((old_obj.time * old_obj.total) + (time_diff))/(old_obj.total+1)
+    obj.total = old_obj.total + 1
+    obj.save()
 
     sources = [doc.metadata["source"] for doc in result["context"]]
     sources = set(split_https(sources))
 
-    #chat_history.append(message)
-    #chat_history.append(result["answer"].split(":")[1] if ':' in result['answer'] else result['answer'])
-    #request.session['chat_history'] = json.dumps(chat_history)
-
-   
-    
     print(result["answer"])
     print(sources)
     print(f"Time for response time: {time_diff}")
@@ -160,16 +153,17 @@ def clear(request):
     if request.method == 'POST':
         # Outputs number of user messages + number of chatbot message
         # DevOp that we try to minimize
-        length = request.POST.get('length', 0)
+        length = int(request.POST.get('length', 0))
         old_obj = AvgChatLength.objects.last()
         if old_obj is None:
             old_obj = obj = AvgChatLength.objects.create()
         else:
             obj = AvgChatLength.objects.create()
+        print("MY LENGTH IS",length)
         obj.length = ((old_obj.length * old_obj.total) + (length))/(old_obj.total+1)
         obj.total = old_obj.total + 1
         obj.save()
-        request.session.flush()
+        #request.session.flush()
     return redirect('chatbot')
 
 def home(request):
