@@ -3,7 +3,14 @@
 {% block title %}home{% endblock %}
 
 {% block styles %}
+
 <style>
+  @media (max-width: 375px) {
+    .options-container {
+      flex-direction: column;
+    }
+  }
+
   body {
     background-color: #800020;
     font-family: Arial, sans-serif;
@@ -61,6 +68,7 @@
     background-color: #0062cc;
   }
 
+  /*
   .login-link {
     margin-top: 20px;
     font-size: 16px;
@@ -76,24 +84,178 @@
   .login-link a:hover {
     text-decoration: underline;
   }
+  */
+
+  /* */
+  /* Main page styling */
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f9f9f9;
+  }
+
+  .title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+  }
+
+  .input-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+
+  .input-prompt {
+    padding: 0.5rem;
+    font-size: 1.25rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-right: 1rem;
+    width: 300px;
+  }
+
+  .btn-search {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.25rem;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  .btn-search:hover {
+    background-color: #45a049;
+  }
+
+  .options-container {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .option-button {
+    padding: 1rem 2rem;
+    font-size: 1.25rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  .option-button:hover {
+    background-color: #d9d9d9;
+  }
+
+  /* .btn-code { background-color: #e1f5fe; }
+  .btn-summarize { background-color: #fff3e0; }
+  .btn-advice { background-color: #e8f5e9; }
+  .btn-surprise { background-color: #f3e5f5; }
+  .btn-more { background-color: #ede7f6; } */
+  
+  /* */
 
 </style>
 {% endblock %}
 
 {% block content %}
+<!-- <div class="main-container">
+  <div class="title">What can I help with?</div>
+  <div class="input-container">
+    <input type="text" class="input-prompt" placeholder="Type your prompt here..." id="userPrompt">
+    <button class="btn-search" onclick="submitPrompt()">Search</button>
+  </div>
+  <div class="options-container">
+    <button class="option-button btn-code">Code</button>
+    <button class="option-button btn-summarize">Summarize text</button>
+    <button class="option-button btn-advice">Get advice</button>
+    <button class="option-button btn-surprise">Surprise me</button>
+    <button class="option-button btn-more">More</button>
+  </div>
+</div> -->
+
+
 <div class="home-container">
   <div class="header">
     <h1 style="color: white">Step-by-step help.</h1>
     <p style="color: white">Expert-supported help for tough SCU questions and navigation. Ask away.</p>
   </div>
   
-  <div class="search-bar">
+  <!-- <div class="search-bar">
     <input type="text" placeholder="What would you like help with today?">
     <button>Search</button>
-  </div>
-
-  <div class="login-link">
-    <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
-  </div>
+  </div> -->
+  <form class="message-form">
+    {% csrf_token %}
+    <div class="options-container">
+      <button id="tutor-index" type="button" class="btn btn-primary btn-lg">Tutoring</button>
+      <button id="safety-index" type="button" class="btn btn-success btn-lg">Safety</button>
+      <button id="large-index" type="button" class="btn btn-secondary btn-lg">Large</button>
+    </div>
+  </form>
 </div>
+
+<script>
+  const largeIndex = document.getElementById("large-index");
+  const safetyIndex = document.getElementById("safety-index");
+  const tutorIndex = document.getElementById("tutor-index");
+
+  tutorIndex.addEventListener("click", (event) => {
+    event.preventDefault();
+    const message = "tutor-test-index";
+    fetch("index", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        csrfmiddlewaretoken: document.querySelector("[name=csrfmiddlewaretoken]").value,
+        message: message,
+      }),
+      redirect: 'manual',
+    }).then(response => location.href = response.url);
+  });  
+
+  safetyIndex.addEventListener("click", (event) => {
+    event.preventDefault();
+    const message = "safety-test-index";
+    fetch("index", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        csrfmiddlewaretoken: document.querySelector("[name=csrfmiddlewaretoken]").value,
+        message: message,
+      }),
+      redirect: 'manual',
+    }).then(response => location.href = response.url);
+  });
+
+  largeIndex.addEventListener("click", (event) => {
+    event.preventDefault();
+    const message = "test-large-index";
+    fetch("index", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        csrfmiddlewaretoken: document.querySelector("[name=csrfmiddlewaretoken]").value,
+        message: message,
+      }),
+      redirect: 'manual',
+    }).then(response => location.href = response.url);
+  });
+
+</script>
+
+<!-- <script>
+  function submitPrompt() {
+    const userPrompt = document.getElementById('userPrompt').value;
+    if (userPrompt.trim() !== '') {
+      window.location.href = `/chatbot?prompt=${encodeURIComponent(userPrompt)}`;
+    }
+  }
+</script> -->
+
 {% endblock %}
