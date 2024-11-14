@@ -86,11 +86,11 @@
     </button>
   </div>
   <div class="options-container">
-    <button class="option-button btn-code">Code</button>
-    <button class="option-button btn-summarize">Summarize text</button>
-    <button class="option-button btn-advice">Get advice</button>
-    <button class="option-button btn-surprise">Surprise me</button>
-    <button class="option-button btn-more">More</button>
+    <button class="option-button btn-code" onclick="setPrompt('Help me with coding problems')">Code</button>
+    <button class="option-button btn-summarize" onclick="setPrompt('Summarize this article for me')">Summarize text</button>
+    <button class="option-button btn-advice" onclick="setAdviceSuggestions()">Get Advice</button>
+    <button class="option-button btn-surprise" onclick="setPrompt('Surprise me with an interesting fact')">Surprise me</button>
+    <button class="option-button btn-more" onclick="setPrompt('Show me more options')">More</button>
   </div>
 </div>
 
@@ -100,6 +100,20 @@
     if (userPrompt.trim() !== '') {
       window.location.href = `/chatbot?prompt=${encodeURIComponent(userPrompt)}`;
     }
+  }
+
+  function setPrompt(promptText) {
+    document.getElementById('userPrompt').value = promptText;
+  }
+
+  function setAdviceSuggestions() {
+    const suggestions = [
+      "Get advice on classes",
+      "Get advice for staying safe on campus",
+      "Get advice for your next academic schedule"
+    ];
+    const randomSuggestion = suggestions[Math.floor(Math.random() * suggestions.length)];
+    document.getElementById('userPrompt').value = randomSuggestion;
   }
 </script>
 {% endblock %}
