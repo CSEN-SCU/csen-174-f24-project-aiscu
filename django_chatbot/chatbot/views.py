@@ -153,17 +153,16 @@ def clear(request):
     if request.method == 'POST':
         # Outputs number of user messages + number of chatbot message
         # DevOp that we try to minimize
-        length = int(request.POST.get('length', 0))
+        length = int(request.POST.get('length', 5))
         old_obj = AvgChatLength.objects.last()
         if old_obj is None:
             old_obj = obj = AvgChatLength.objects.create()
         else:
             obj = AvgChatLength.objects.create()
-        print("MY LENGTH IS",length)
-        obj.length = ((old_obj.length * old_obj.total) + (length))/(old_obj.total+1)
+        obj.length = (old_obj.length * old_obj.total + length)/(old_obj.total+1)
         obj.total = old_obj.total + 1
         obj.save()
-        #request.session.flush()
+        request.session.flush()
     return redirect('chatbot')
 
 def home(request):
