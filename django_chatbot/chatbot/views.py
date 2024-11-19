@@ -11,7 +11,7 @@ import json
 #
 import os
 from dotenv import load_dotenv
-load_dotenv()
+load_dotenv(override=True)
 
 openai_api_key = os.getenv('OPENAI_API_KEY') # Your OpenAI API key here 
 pinecone_api_key = os.getenv('PINECONE_API_KEY')
@@ -134,7 +134,13 @@ def chatbot(request):
         print(chat_history)
         response, sources = ask_openai(chat_history, message, request)
         return JsonResponse({'message': message, 'response': response, 'sources': sources})
-    return render(request, 'chatbot.html')
+    
+    if  request.session['index'] == 'tutor-test-index':
+        return render(request, 'chatbot_tutor.html')
+    elif request.session['index'] == 'safety-test-index':
+        return render(request, 'chatbot_safety.html')
+    else:
+        return render(request, 'chatbot_large.html')
 
 # Index function to set the selected index
 def index(request):
