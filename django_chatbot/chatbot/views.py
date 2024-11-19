@@ -135,12 +135,14 @@ def chatbot(request):
         response, sources = ask_openai(chat_history, message, request)
         return JsonResponse({'message': message, 'response': response, 'sources': sources})
     
-    if  request.session['index'] == 'tutor-test-index':
+    if request.session.get('index') == 'tutor-test-index':
         return render(request, 'chatbot_tutor.html')
-    elif request.session['index'] == 'safety-test-index':
+    elif request.session.get('index') == 'safety-test-index':
         return render(request, 'chatbot_safety.html')
-    else:
+    elif request.session.get('index') == 'test-large-index':
         return render(request, 'chatbot_large.html')
+    else:
+        return render(request, 'home.html')
 
 # Index function to set the selected index
 def index(request):
