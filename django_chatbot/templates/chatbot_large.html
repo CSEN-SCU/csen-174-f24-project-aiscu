@@ -394,18 +394,27 @@
   
   {/* end of snippet */}
 
+  var loaded = 0;
   function submitPrompt() {
+    if (loaded == 1)
+      return;
     const userPrompt = document.getElementById('userPrompt').value;
     if (userPrompt.trim() !== '') {
       window.location.href = `/chatbot?prompt=${encodeURIComponent(userPrompt)}`;
     }
+    loaded = loaded +1;
   }
 
   function setPrompt(promptText) {
+    if (loaded == 1)
+      return;
     document.getElementById('userPrompt').value = promptText;
+    loaded = loaded +1;
   }
 
   function setAdviceSuggestions() {
+    if (loaded == 1)
+      return;
     const suggestions = [
       "Get advice on classes",
       "Get advice for staying safe on campus",
@@ -413,6 +422,7 @@
     ];
     const randomSuggestion = suggestions[Math.floor(Math.random() * suggestions.length)];
     document.getElementById('userPrompt').value = randomSuggestion;
+    loaded = loaded +1;
   }
 
 </script>

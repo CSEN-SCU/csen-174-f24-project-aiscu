@@ -12,6 +12,12 @@ from django.db import models
 #        return f'{self.user.username}: {self.message}'
 
 #DevOps
+class DevOpsMetrics(models.Model):
+    chatbot_index = models.TextField()
+    metric_type = models.TextField()
+    metric_value = models.FloatField(default=0.0)
+    created_at = models.DateTimeField(auto_now_add=True)
+
 class Counters(models.Model):
     counter = models.IntegerField(default=0)
     index_name = models.TextField(unique=True)

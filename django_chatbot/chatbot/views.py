@@ -4,6 +4,7 @@ import openai
 from .models import Counters
 from .models import AvgResponseTime
 from .models import AvgChatLength
+from .models import DevOpsMetrics
 from django.utils import timezone
 
 #for serializing arrays
@@ -98,6 +99,7 @@ def ask_openai(chat_history, message, request):
     # Run For User To Interact With Chatbot
     deserial_chat_history = [HumanMessage(content=j) if i%2==0 else AIMessage(content=j) for i,j in enumerate(chat_history)]
 
+
     # Passes User_Request to OpenAI
     # DevOp measures the time before this line & time after
     begin = time.time()
@@ -107,6 +109,8 @@ def ask_openai(chat_history, message, request):
     })
     end = time.time()
     time_diff = end - begin
+
+    #Old Code#
     old_obj = AvgResponseTime.objects.last()
     if old_obj is None:
         old_obj = obj = AvgResponseTime.objects.create()
@@ -115,6 +119,13 @@ def ask_openai(chat_history, message, request):
     obj.time = ((old_obj.time * old_obj.total) + (time_diff))/(old_obj.total+1)
     obj.total = old_obj.total + 1
     obj.save()
+
+    #New Code#
+    old_obj = DevOpsMetrics.objects.filter(chatbot_index=index_name,metric_type='avgresponsetime').last()
+    total =  DevOpsMetrics.objects.filter(chatbot_index=index_name,metric_type='avgresponsetime').count()
+    old_value = float(old_obj.metric_value) if old_obj else 0.0
+    obj = DevOpsMetrics.objects.create(chatbot_index=index_name, metric_type='avgresponsetime', metric_value= ((old_value * total) + (time_diff))/(total+1))
+    
 
     sources = [doc.metadata["source"] for doc in result["context"]]
     sources = set(split_https(sources))
@@ -148,20 +159,32 @@ def chatbot(request):
 def index(request):
     if request.method == 'POST':
         request.session['index'] = request.POST.get('message', 'langchain-test-index')
+        index_name=request.session['index']
 
         # DevOp tracks number of times an index/specialized chatbot is used
+        #Old Code#
         obj, _ = Counters.objects.get_or_create(
-            index_name=request.session['index']
+            index_name=index_name
         )
         obj.counter+=1
         obj.save()
+
+        #New Code#
+        old_obj = DevOpsMetrics.objects.filter(chatbot_index=index_name,metric_type='chatbotcounter').last()
+        old_value = int(old_obj.metric_value) if old_obj else 0 
+        obj = DevOpsMetrics.objects.create(chatbot_index=index_name, metric_type='chatbotcounter', metric_value= old_value+1)
+        
+
     return redirect('chatbot')
 
 def clear(request):
     if request.method == 'POST':
         # Outputs number of user messages + number of chatbot message
         # DevOp that we try to minimize
+        index_name = request.session.get('index','langchain-test-index')
         length = int(request.POST.get('length', 5))
+
+        #Old Code#
         old_obj = AvgChatLength.objects.last()
         if old_obj is None:
             old_obj = obj = AvgChatLength.objects.create()
@@ -170,6 +193,13 @@ def clear(request):
         obj.length = (old_obj.length * old_obj.total + length)/(old_obj.total+1)
         obj.total = old_obj.total + 1
         obj.save()
+
+        #New Code#
+        old_obj = DevOpsMetrics.objects.filter(chatbot_index=index_name,metric_type='avgchatlength').last()
+        total =  DevOpsMetrics.objects.filter(chatbot_index=index_name,metric_type='avgchatlength').count()
+        old_value = int(old_obj.metric_value) if old_obj else 0
+        obj = DevOpsMetrics.objects.create(chatbot_index=index_name, metric_type='avgchatlength', metric_value=(int(old_value) * total + length)/(total+1))
+
         request.session.flush()
     return redirect('chatbot')
 
