@@ -72,26 +72,31 @@
     background-color: #d9d9d9;
   }
 
-  .btn-code { background-color: #e1f5fe; }
+  /* .btn-code { background-color: #e1f5fe; }
   .btn-summarize { background-color: #fff3e0; }
   .btn-advice { background-color: #e8f5e9; }
   .btn-surprise { background-color: #f3e5f5; }
-  .btn-more { background-color: #ede7f6; }
+  .btn-more { background-color: #ede7f6; } */
 
+  .btn-option-1 { background-color: #e1f5fe;}
+  .btn-option-2 { background-color: #fff3e0;}
+  .btn-option-3 { background-color: #e8f5e9;}
+  .btn-option-4 { background-color: #f3e5f5;}
+  .btn-option-surprise { background-color: #ffe0b2;}
 
   /* Styles unchanged for chat layout */
   body, html { height: 100%; }
   .messages-box { flex: 1; overflow-y: auto; }
   .messages-list { padding-left: 0; }
   .message { margin-bottom: 15px; list-style: none; }
-  .message-text { padding: 10px; border-radius: 5px; }
+  .message-text { padding: 10px; border-radius: 5px; font-size: 1.125rem;line-height: 1.6;}
   .sent { background-color: #dcf8c6; align-self: flex-end; }
   .received { background-color: #f1f0f0; align-self: flex-start; }
   .message-form { display: flex; position: fixed; bottom: 0; left: 0; right: 0; padding: 10px; background-color: #f8f9fa; }
   .message-input { flex: 1; border-radius: 0; border-right: none; }
   .btn-send { border-radius: 0; }
   .chat-container { height: 100%; display: flex; flex-direction: column; }
-  .card-header { background-color: #800020; }
+  .card-header { background-color: #800020; font-size:18px}
 
   /* New styling for source display */
   .message-sources {
@@ -111,16 +116,41 @@
     color: #333;
     text-decoration: underline;
   }
+
+  div#suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  div#suggestions * {
+    white-space: normal !important; word-wrap: break-word;
+  }
+  
+
 </style>
 {% endblock %}
 
 {% block content %}
+
+{% block surprise %}
+<!-- <script>
+  const surprisePrompts = [
+    "Get advice on classes",
+    "Get advice for staying safe on campus",
+    "Get advice for your next academic schedule"
+  ];
+</script> -->
+{% endblock %}
+
 <div class="chat-container">
   <div class="card flex-grow-1">
-    <div class="card-header text-white">Chat</div>
+    {% block header %}
+    <!-- <div class="card-header text-white">General Chatbot</div>
     <div class="card-header text-white">
-      <b>Welcome! Ask me anything.</b>
-    </div>
+      <b>Welcome! Ask me anything about SCU.</b>
+    </div> -->
+    {% endblock %}
     
     <div class="card-body messages-box">
       <ul class="list-unstyled messages-list">
@@ -134,19 +164,18 @@
     {% csrf_token %}
 
     <div id="suggestions" class="options-container" style="padding-bottom: 10px;" >
-      <button class="option-button btn-code" onclick="setPrompt('Help me with coding problems')">Code</button>
-      <button class="option-button btn-summarize" onclick="setPrompt('Summarize this article for me')">Summarize text</button>
-      <button class="option-button btn-advice" onclick="setAdviceSuggestions()">Get Advice</button>
-      <button class="option-button btn-surprise" onclick="setPrompt('Surprise me with an interesting fact')">Surprise me</button>
-      <button class="option-button btn-more" onclick="setPrompt('Show me more options')">More</button>
+      {% block suggestions %}
+      <!-- <button type="button" class="option-button btn-code" onclick="setPrompt('Help me with coding problems')">Code</button>
+      <button type="button" class="option-button btn-summarize" onclick="setPrompt('Summarize this article for me')">Summarize text</button>
+      <button type="button" class="option-button btn-advice" onclick="setAdviceSuggestions()">Get Advice</button>
+      <button type="button" class="option-button btn-surprise" onclick="setPrompt('Surprise me with an interesting fact')">Surprise me</button>
+      <button type="button" class="option-button btn-more" onclick="setPrompt('Show me more options')">More</button> -->
+      {% endblock %}
     </div>
     <div class="input-group">
       <input id="userPrompt" type="text" class="form-control message-input" placeholder="Type your message..." />
       <div class="input-group-append">
         <button id="send-btn" type="submit" class="btn btn-primary btn-send">Send</button>
-        <!-- <button id="default-index" type="button" class="btn btn-success btn-send" disabled>Default</button>
-        <button id="safety-index" type="button" class="btn btn-success btn-send">Safety</button>
-        <button id="tutor-index" type="button" class="btn btn-success btn-send">Tutor</button> -->
       </div>
     </div>
   </form>
@@ -158,9 +187,6 @@
   const messagesList = document.querySelector(".messages-list");
   const messageForm = document.querySelector(".message-form");
   const messageInput = document.querySelector(".message-input");
-  // const defaultIndex = document.getElementById("default-index");
-  // const safetyIndex = document.getElementById("safety-index");
-  // const tutorIndex = document.getElementById("tutor-index");
   const sendButton = document.getElementById("send-btn");
   const suggestions = document.getElementById("suggestions");
 
@@ -254,7 +280,7 @@
             </div>
             ${sources.length ? `
             <div class="message-sources" style="display:flex;flex-direction:row;flex-wrap:wrap;">
-                ${sources.map((source, idx) => `<a href="${source}" target="_blank" class="badge badge-primary" style="word-break:break-all;white-space:normal;text-align:left"><span class="badge badge-pill badge-light">${idx}</span> ${source}</a>`).join("")}
+                ${sources.map((source, idx) => `<a href="${source}" target="_blank" class="badge badge-primary" style="word-break:break-all;white-space:normal;text-align:left;font-size: 15px;"><span class="badge badge-pill badge-light">${idx}</span> ${source}</a>`).join("")}
             </div>` : ''}
         </div>
           `;
@@ -268,53 +294,8 @@
       });
   });
 
-  // defaultIndex.addEventListener("click", (event) => {
-  //   event.preventDefault();
-  //   toggle();
-  //   defaultIndex.toggleAttribute("disabled");
-  //   const message = "langchain-test-index";
-  //   fetch("index", {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/x-www-form-urlencoded" },
-  //     body: new URLSearchParams({
-  //       csrfmiddlewaretoken: document.querySelector("[name=csrfmiddlewaretoken]").value,
-  //       message: message,
-  //     }),
-  //   });
-  // });
-
-  // safetyIndex.addEventListener("click", (event) => {
-  //   event.preventDefault();
-  //   toggle();
-  //   safetyIndex.toggleAttribute("disabled");
-  //   const message = "safety-test-index";
-  //   fetch("index", {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/x-www-form-urlencoded" },
-  //     body: new URLSearchParams({
-  //       csrfmiddlewaretoken: document.querySelector("[name=csrfmiddlewaretoken]").value,
-  //       message: message,
-  //     }),
-  //   });
-  // });
-
-  // tutorIndex.addEventListener("click", (event) => {
-  //   event.preventDefault();
-  //   toggle();
-  //   tutorIndex.toggleAttribute("disabled");
-  //   const message = "tutor-test-index";
-  //   fetch("index", {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/x-www-form-urlencoded" },
-  //     body: new URLSearchParams({
-  //       csrfmiddlewaretoken: document.querySelector("[name=csrfmiddlewaretoken]").value,
-  //       message: message,
-  //     }),
-  //   });
-  // });
-
   // window.addEventListener('beforeunload', (event) => {
-  //   const message = "langchain-test-index";
+  //   const message = "general-index";
   //   fetch("index", {
   //     method: "POST",
   //     headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -394,26 +375,31 @@
   
   {/* end of snippet */}
 
-  function submitPrompt() {
-    const userPrompt = document.getElementById('userPrompt').value;
-    if (userPrompt.trim() !== '') {
-      window.location.href = `/chatbot?prompt=${encodeURIComponent(userPrompt)}`;
-    }
-  }
+  // function submitPrompt() {
+  //   const userPrompt = document.getElementById('userPrompt').value;
+  //   if (userPrompt.trim() !== '') {
+  //     window.location.href = `/chatbot?prompt=${encodeURIComponent(userPrompt)}`;
+  //   }
+  // }
 
   function setPrompt(promptText) {
     document.getElementById('userPrompt').value = promptText;
   }
 
-  function setAdviceSuggestions() {
-    const suggestions = [
-      "Get advice on classes",
-      "Get advice for staying safe on campus",
-      "Get advice for your next academic schedule"
-    ];
-    const randomSuggestion = suggestions[Math.floor(Math.random() * suggestions.length)];
+  function surpriseSuggestions() {
+    const randomSuggestion = surprisePrompts[Math.floor(Math.random() * surprisePrompts.length)];
     document.getElementById('userPrompt').value = randomSuggestion;
   }
+
+  //function setAdviceSuggestions() {
+  //  const suggestions = [
+  //    "Get advice on classes",
+  //    "Get advice for staying safe on campus",
+  //    "Get advice for your next academic schedule"
+  //  ];
+  //  const randomSuggestion = suggestions[Math.floor(Math.random() * suggestions.length)];
+  //  document.getElementById('userPrompt').value = randomSuggestion;
+  //}
 
 </script>
 {% endblock %}

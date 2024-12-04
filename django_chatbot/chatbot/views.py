@@ -56,15 +56,16 @@ def ask_openai(chat_history, message, request):
         return result
     
     # Run To Select/Swap Database
-    index_name = request.session.get('index','langchain-test-index') #(wanted, default fallback)
+    index_name = request.session.get('index','general-index') #(wanted, default fallback)
     index = pc.Index(index_name)
 
     def create_chain(vectorStore):
         system_prompt = (
-            "You are an AI assistant designed to help students at Santa Clara University (SCU) navigate university resources, based on their personal needs." 
-            "Your goal is to provide quick, clear, and accurate guidance by suggesting relevant SCU resources."
+            "You are an AI assistant designed to help students at Santa Clara University (SCU) navigate university resources, based on their personal needs."
             "Be friendly, and approachable."
-            "Provide specific contacts whenever possible."
+            "Do NOT attempt to guess or complete unfinished questions."
+            "If what is being asked of you appears to be incomplete, do not complete it, and instead respond saying it looks incomplete."
+            "If you cannot find the answer in the context, say you cannot find it, rather than answer it."
             "Answer based on this context: {context}"
         )
         prompt = ChatPromptTemplate.from_messages([
@@ -77,11 +78,20 @@ def ask_openai(chat_history, message, request):
             prompt=prompt
         )
         retriever = vectorStore.as_retriever(search_kwargs={"k": 3})
+
+        retrival_prompt = (
+            "Given a chat history and the latest user question which might reference the chat history above,"
+            "formulate a standalone question which can be understood without the chat history."
+            "Do NOT answer the question or attempt to complete it if it looks incomplete."
+            "Just reformulate it, if it looks complete, and otherwise return it as is."
+        )
+
         retriever_prompt = ChatPromptTemplate.from_messages([
+            ("system", retrival_prompt),
             MessagesPlaceholder(variable_name="chat_history"),
-            ("user", "{input}"),
-            ("user", "Given the above conversation, generate a search query to look up in order to get information relevant to the conversation")
-        ])
+            ("user", "{input}")
+         ])
+
         history_aware_retriever = create_history_aware_retriever(
             llm=llm,
             retriever=retriever,
@@ -109,6 +119,7 @@ def ask_openai(chat_history, message, request):
     })
     end = time.time()
     time_diff = end - begin
+    print(f"Time for response time: {time_diff}")
 
     #Old Code#
     old_obj = AvgResponseTime.objects.last()
@@ -126,15 +137,17 @@ def ask_openai(chat_history, message, request):
     old_value = float(old_obj.metric_value) if old_obj else 0.0
     obj = DevOpsMetrics.objects.create(chatbot_index=index_name, metric_type='avgresponsetime', metric_value= ((old_value * total) + (time_diff))/(total+1))
     
+    #retrival_question = result["answer"].split(":", 1)[0]
+    #output = result["answer"].split(":", 1)[1]
 
     sources = [doc.metadata["source"] for doc in result["context"]]
     sources = set(split_https(sources))
 
     print(result["answer"])
     print(sources)
-    print(f"Time for response time: {time_diff}")
-
-    return result["answer"].split(":")[1] if ':' in result['answer'] else result['answer'], list(sources)
+    
+    #return output, list(sources)
+    return result["answer"].split(":", 1)[1] if ':' in result['answer'] else result['answer'], list(sources)
 
 # Chatbot view to handle user interaction
 def chatbot(request):
@@ -146,19 +159,23 @@ def chatbot(request):
         response, sources = ask_openai(chat_history, message, request)
         return JsonResponse({'message': message, 'response': response, 'sources': sources})
     
-    if request.session.get('index') == 'tutor-test-index':
-        return render(request, 'chatbot_tutor.html')
-    elif request.session.get('index') == 'safety-test-index':
-        return render(request, 'chatbot_safety.html')
-    elif request.session.get('index') == 'test-large-index':
-        return render(request, 'chatbot_large.html')
+    if request.session.get('index') == 'technology-index':
+        return render(request, 'chatbot_technology.html')
+    elif request.session.get('index') == 'academic-index':
+        return render(request, 'chatbot_academic.html')
+    elif request.session.get('index') == 'health-and-safety-index':
+        return render(request, 'chatbot_health_safety.html')
+    elif request.session.get('index') == 'services-index':
+        return render(request, 'chatbot_services.html')
+    elif request.session.get('index') == 'general-index':
+        return render(request, 'chatbot_general.html')
     else:
         return render(request, 'home.html')
 
 # Index function to set the selected index
 def index(request):
     if request.method == 'POST':
-        request.session['index'] = request.POST.get('message', 'langchain-test-index')
+        request.session['index'] = request.POST.get('message', 'general-index')
         index_name=request.session['index']
 
         # DevOp tracks number of times an index/specialized chatbot is used
@@ -181,7 +198,7 @@ def clear(request):
     if request.method == 'POST':
         # Outputs number of user messages + number of chatbot message
         # DevOp that we try to minimize
-        index_name = request.session.get('index','langchain-test-index')
+        index_name = request.session.get('index','general-index')
         length = int(request.POST.get('length', 5))
 
         #Old Code#

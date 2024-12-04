@@ -5,12 +5,6 @@
 {% block styles %}
 
 <style>
-  @media (max-width: 375px) {
-    .options-container {
-      flex-direction: column;
-    }
-  }
-
   body {
     background-color: #800020;
     font-family: Arial, sans-serif;
@@ -136,6 +130,8 @@
 
   .options-container {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 1.5rem;
   }
 
@@ -182,7 +178,7 @@
 
 <div class="home-container">
   <div class="header">
-    <h1 style="color: white">Step-by-step help.</h1>
+    <h1 style="color: white">A<strong style="text-decoration:underline;">I</strong>S<strong style="text-decoration:underline;">CU</strong></h1>
     <p style="color: white">Expert-supported help for tough SCU questions and navigation. Ask away.</p>
   </div>
   
@@ -193,21 +189,26 @@
   <form class="message-form">
     {% csrf_token %}
     <div class="options-container">
-      <button id="tutor-index" type="button" class="btn btn-primary btn-lg">Tutoring</button>
-      <button id="safety-index" type="button" class="btn btn-success btn-lg">Safety</button>
-      <button id="large-index" type="button" class="btn btn-secondary btn-lg">General</button>
+      <button id="academic-index" type="button" class="btn btn-primary btn-lg">Academics</button>
+      <button id="services-index" type="button" class="btn btn-secondary btn-lg">Services</button>
+      <button id="health-and-safety-index" type="button" class="btn btn-danger btn-lg">Health & Safety</button>
+      <button id="technology-index" type="button" class="btn btn-dark btn-lg">Technology</button>
+      <button id="general-index" type="button" class="btn btn-success btn-lg">General</button>
     </div>
   </form>
 </div>
 
 <script>
-  const largeIndex = document.getElementById("large-index");
-  const safetyIndex = document.getElementById("safety-index");
-  const tutorIndex = document.getElementById("tutor-index");
+  const technologyIndex = document.getElementById("technology-index");
+  const academicIndex = document.getElementById("academic-index");
+  const health_and_safetyIndex = document.getElementById("health-and-safety-index");
+  const servicesIndex = document.getElementById("services-index");
+  const generalIndex = document.getElementById("general-index");
+  
 
-  tutorIndex.addEventListener("click", (event) => {
+  technologyIndex.addEventListener("click", (event) => {
     event.preventDefault();
-    const message = "tutor-test-index";
+    const message = "technology-index";
     fetch("index", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -219,9 +220,9 @@
     }).then(response => location.href = response.url);
   });  
 
-  safetyIndex.addEventListener("click", (event) => {
+  academicIndex.addEventListener("click", (event) => {
     event.preventDefault();
-    const message = "safety-test-index";
+    const message = "academic-index";
     fetch("index", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -233,9 +234,37 @@
     }).then(response => location.href = response.url);
   });
 
-  largeIndex.addEventListener("click", (event) => {
+  health_and_safetyIndex.addEventListener("click", (event) => {
     event.preventDefault();
-    const message = "test-large-index";
+    const message = "health-and-safety-index";
+    fetch("index", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        csrfmiddlewaretoken: document.querySelector("[name=csrfmiddlewaretoken]").value,
+        message: message,
+      }),
+      redirect: 'manual',
+    }).then(response => location.href = response.url);
+  });
+
+  servicesIndex.addEventListener("click", (event) => {
+    event.preventDefault();
+    const message = "services-index";
+    fetch("index", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        csrfmiddlewaretoken: document.querySelector("[name=csrfmiddlewaretoken]").value,
+        message: message,
+      }),
+      redirect: 'manual',
+    }).then(response => location.href = response.url);
+  });  
+
+  generalIndex.addEventListener("click", (event) => {
+    event.preventDefault();
+    const message = "general-index";
     fetch("index", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
