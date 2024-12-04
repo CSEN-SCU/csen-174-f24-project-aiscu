@@ -1,0 +1,66 @@
+{% extends 'chatbot.html' %} 
+{% block header %}
+<div class="card-header text-white">Technology Chatbot</div>
+<div class="card-header text-white">
+  <b>Welcome! Ask me anything about technology at SCU.</b>
+</div>
+{% endblock %}
+
+{% block surprise %}
+<script>
+const surprisePrompts = [
+  'What tech resources are available for computer labs on campus? ',
+  'What tech resources are available for students needing laptops?',
+  'What tech resources are available for faculty IT support?      ',
+  'How do I troubleshoot Wi-Fi issues at the library?',
+  'How do I troubleshoot access to school email?     ',
+  'How do I troubleshoot printing from my laptop?    ',
+  'What software is provided for online learning platforms?',
+  'What software is provided for editing videos for a project?',
+  'What software is provided for designing presentations?',
+  'What are the rules for using campus computers?',
+  'What are the rules for using personal devices in class?',
+  'What are the rules for using tech resources after graduation?'
+];
+</script>
+{% endblock %}
+
+{% block suggestions %}
+<div class="btn-group dropup">
+  <button type="button" class="option-button btn-option-1 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="setPrompt('What tech resources are available for...')">Access Tech Resources</button>
+  <div class="dropdown-menu">
+    <button type="button" class="dropdown-item" onclick="setPrompt('What tech resources are available for computer labs on campus? ')">           What tech resources are <strong>available for computer labs on campus? </strong></button>
+    <button type="button" class="dropdown-item" onclick="setPrompt('What tech resources are available for students needing laptops?')">    What tech resources are <strong>available for students needing laptops?</strong></button>
+    <button type="button" class="dropdown-item" onclick="setPrompt('What tech resources are available for faculty IT support?      ')">What tech resources are <strong>available for faculty IT support?      </strong></button>
+  </div>
+</div>
+
+<div class="btn-group dropup">
+  <button type="button" class="option-button btn-option-2 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="setPrompt('How do I troubleshoot...')">Get Help with IT Issues</button>
+  <div class="dropdown-menu">
+    <button type="button" class="dropdown-item" onclick="setPrompt('How do I troubleshoot Wi-Fi issues at the library?')">        How do I troubleshoot <strong>Wi-Fi issues at the library?</strong></button>
+    <button type="button" class="dropdown-item" onclick="setPrompt('How do I troubleshoot access to school email?     ')">           How do I troubleshoot <strong>access to school email?     </strong></button>
+    <button type="button" class="dropdown-item" onclick="setPrompt('How do I troubleshoot printing from my laptop?    ')">How do I troubleshoot <strong>printing from my laptop?    </strong></button>
+  </div>
+</div>
+
+<div class="btn-group dropup">
+  <button type="button" class="option-button btn-option-3 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="setPrompt('What software is provided for...')">Explore Software & Tools</button>
+  <div class="dropdown-menu">
+    <button type="button" class="dropdown-item" onclick="setPrompt('What software is provided for online learning platforms?')">    What software is provided for <strong>online learning platforms?</strong></button>
+    <button type="button" class="dropdown-item" onclick="setPrompt('What software is provided for editing videos for a project?')"> What software is provided for <strong>editing videos for a project?</strong></button>
+    <button type="button" class="dropdown-item" onclick="setPrompt('What software is provided for designing presentations?')">      What software is provided for <strong>designing presentations?</strong></button>
+  </div>
+</div>
+
+<div class="btn-group dropup">
+  <button type="button" class="option-button btn-option-4 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="setPrompt('What are the rules for using...')">Find Tech Policies</button>
+  <div class="dropdown-menu">
+    <button type="button" class="dropdown-item" onclick="setPrompt('What are the rules for using campus computers?')">             What are the rules for using <strong>campus computers?</strong></button>
+    <button type="button" class="dropdown-item" onclick="setPrompt('What are the rules for using personal devices in class?')">What are the rules for using <strong>personal devices in class?</strong></button>
+    <button type="button" class="dropdown-item" onclick="setPrompt('What are the rules for using tech resources after graduation?')">  What are the rules for using <strong>tech resources after graduation?</strong></button>
+  </div>
+</div>
+
+<button type="button" class="option-button btn-option-surprise" onclick="surpriseSuggestions()">Surprise Me</button>
+{% endblock %}

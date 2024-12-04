@@ -1,0 +1,66 @@
+{% extends 'chatbot.html' %} 
+{% block header %}
+<div class="card-header text-white">Health & Safety Chatbot</div>
+<div class="card-header text-white">
+  <b>Welcome! Ask me anything about health and safety at SCU.</b>
+</div>
+{% endblock %}
+
+{% block surprise %}
+<script>
+const surprisePrompts = [
+  'What health services are available for mental health support?',
+  'What health services are available for medical emergencies on campus?',
+  'What health services are available for health check-ups or counseling?',
+  'Who do I contact for campus emergencies?',
+  'Who do I contact for lost and found items?',
+  'Who do I contact for safety escorts at night?',
+  'What wellness programs are available for stress management?',
+  'What wellness programs are available for physical fitness activities?',
+  'What wellness programs are available for mental health workshops?',
+  'How do I report suspicious activity on campus?',
+  'How do I report a hazard in a building?',
+  'How do I report concerns about student safety?'
+];
+</script>
+{% endblock %}
+
+{% block suggestions %}
+<div class="btn-group dropup">
+  <button type="button" class="option-button btn-option-1 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="setPrompt('What health services are available for...')">Learn About Health Services</button>
+  <div class="dropdown-menu">
+    <button type="button" class="dropdown-item" onclick="setPrompt('What health services are available for mental health support?')">What health services are available for <strong>mental health support?         </strong></button>
+    <button type="button" class="dropdown-item" onclick="setPrompt('What health services are available for medical emergencies on campus?')">What health services are available for <strong>medical emergencies on campus? </strong></button>
+    <button type="button" class="dropdown-item" onclick="setPrompt('What health services are available for health check-ups or counseling?')">What health services are available for <strong>health check-ups or counseling?</strong></button>
+  </div>
+</div>
+
+<div class="btn-group dropup">
+  <button type="button" class="option-button btn-option-2 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="setPrompt('Who do I contact for...')">Find Emergency Contacts</button>
+  <div class="dropdown-menu">
+    <button type="button" class="dropdown-item" onclick="setPrompt('Who do I contact for campus emergencies?')">Who do I contact for <strong>campus emergencies?</strong></button>
+    <button type="button" class="dropdown-item" onclick="setPrompt('Who do I contact for lost and found items?')">Who do I contact for <strong>lost and found items?</strong></button>
+    <button type="button" class="dropdown-item" onclick="setPrompt('Who do I contact for safety escorts at night?')">Who do I contact for <strong>safety escorts at night?</strong></button>
+  </div>
+</div>
+
+<div class="btn-group dropup">
+  <button type="button" class="option-button btn-option-3 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="setPrompt('What wellness programs are available for...')">Explore Wellness Programs</button>
+  <div class="dropdown-menu">
+    <button type="button" class="dropdown-item" onclick="setPrompt('What wellness programs are available for stress management?')">    What wellness programs are available for <strong>stress management?</strong></button>
+    <button type="button" class="dropdown-item" onclick="setPrompt('What wellness programs are available for physical fitness activities?')"> What wellness programs are available for <strong>physical fitness activities?</strong></button>
+    <button type="button" class="dropdown-item" onclick="setPrompt('What wellness programs are available for mental health workshops?')">      What wellness programs are available for <strong>mental health workshops?</strong></button>
+  </div>
+</div>
+
+<div class="btn-group dropup">
+  <button type="button" class="option-button btn-option-4 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="setPrompt('How do I report...')">Report a Safety Concern</button>
+  <div class="dropdown-menu">
+    <button type="button" class="dropdown-item" onclick="setPrompt('How do I report suspicious activity on campus?')">                How do I report <strong>suspicious activity on campus?</strong> </button>
+    <button type="button" class="dropdown-item" onclick="setPrompt('How do I report a hazard in a building?')">       How do I report <strong>a hazard in a building?</strong> </button>
+    <button type="button" class="dropdown-item" onclick="setPrompt('How do I report concerns about student safety?')"> How do I report <strong>concerns about student safety?</strong> </button>
+  </div>
+</div>
+
+<button type="button" class="option-button btn-option-surprise" onclick="surpriseSuggestions()">Surprise Me</button>
+{% endblock %}

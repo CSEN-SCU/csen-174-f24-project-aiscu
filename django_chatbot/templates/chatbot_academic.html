@@ -1,0 +1,66 @@
+{% extends 'chatbot.html' %} 
+{% block header %}
+<div class="card-header text-white">Academic Chatbot</div>
+<div class="card-header text-white">
+  <b>Welcome! Ask me anything about academics at SCU.</b>
+</div>
+{% endblock %}
+
+{% block surprise %}
+<script>
+const surprisePrompts= [
+    'Where can I find study materials for my specific course?',
+    'Where can I find study materials for exam preparation?',
+    'Where can I find study materials for research projects?',
+    'How do I access online journal subscriptions?',
+    'How do I access library hours and rules?',    
+    'How do I access library resources remotely?',  
+    'Are there tutors or study groups for math and science subjects?',
+    'Are there tutors or study groups for language learning?',
+    'Are there tutors or study groups for my final-year project?',
+    'What information is available about upcoming semester courses?',
+    'What information is available about prerequisites for advanced classes?',
+    'What information is available about electives in my field of study?'
+];
+</script>
+{% endblock %}
+
+{% block suggestions %}
+<div class="btn-group dropup">
+  <button type="button" class="option-button btn-option-1 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="setPrompt('Where can I find study materials for...')">Find Study Resources</button>
+  <div class="dropdown-menu">
+    <button type="button" class="dropdown-item" onclick="setPrompt('Where can I find study materials for my specific course?')">Where can I find study materials for <strong>my specific course?</strong></button>
+    <button type="button" class="dropdown-item" onclick="setPrompt('Where can I find study materials for exam preparation?')  ">Where can I find study materials for <strong>exam preparation?</strong></button>
+    <button type="button" class="dropdown-item" onclick="setPrompt('Where can I find study materials for research projects?') ">Where can I find study materials for <strong>research projects?</strong></button>
+  </div>
+</div>
+
+<div class="btn-group dropup">
+  <button type="button" class="option-button btn-option-2 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="setPrompt('How do I access...')">Ask About Library Access</button>
+  <div class="dropdown-menu">
+    <button type="button" class="dropdown-item" onclick="setPrompt('How do I access online journal subscriptions?')">How do I access <strong>online journal subscriptions?</strong></button>
+    <button type="button" class="dropdown-item" onclick="setPrompt('How do I access library hours and rules?')     ">How do I access <strong>library hours and rules?</strong></button>
+    <button type="button" class="dropdown-item" onclick="setPrompt('How do I access library resources remotely?')  ">How do I access <strong>library resources remotely?</strong></button>
+  </div>
+</div>
+
+<div class="btn-group dropup">
+  <button type="button" class="option-button btn-option-3 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="setPrompt('Are there tutors or study groups for...')">Locate Tutors or Study Groups</button>
+  <div class="dropdown-menu">
+    <button type="button" class="dropdown-item" onclick="setPrompt('Are there tutors or study groups for math and science subjects?')">Are there tutors or study groups for <strong>math and science subjects?</strong></button>
+    <button type="button" class="dropdown-item" onclick="setPrompt('Are there tutors or study groups for language learning?')        ">Are there tutors or study groups for <strong>language learning?</strong></button>
+    <button type="button" class="dropdown-item" onclick="setPrompt('Are there tutors or study groups for my final-year project?')    ">Are there tutors or study groups for <strong>my final-year project?</strong></button>
+  </div>
+</div>
+
+<div class="btn-group dropup">
+  <button type="button" class="option-button btn-option-4 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="setPrompt('What information is available about...')">Get Course Info</button>
+  <div class="dropdown-menu">
+    <button type="button" class="dropdown-item" onclick="setPrompt('What information is available about upcoming semester courses?')         ">What information is available about <strong>upcoming semester courses?</strong></button>
+    <button type="button" class="dropdown-item" onclick="setPrompt('What information is available about prerequisites for advanced classes?')">What information is available about <strong>prerequisites for advanced classes?</strong></button>
+    <button type="button" class="dropdown-item" onclick="setPrompt('What information is available about electives in my field of study?')    ">What information is available about <strong>electives in my field of study?</strong></button>
+  </div>
+</div>
+
+<button type="button" class="option-button btn-option-surprise" onclick="surpriseSuggestions()">Surprise Me</button>
+{% endblock %}

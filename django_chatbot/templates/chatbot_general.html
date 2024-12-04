@@ -1,0 +1,66 @@
+{% extends 'chatbot.html' %} 
+{% block header %}
+<div class="card-header text-white">General Information Chatbot</div>
+<div class="card-header text-white">
+  <b>Welcome! Ask me anything about SCU.</b>
+</div>
+{% endblock %}
+
+{% block surprise %}
+<script>
+const surprisePrompts= [
+  'How can I start using school resources for my needs?',
+  'How can I start using technology or services here?',
+  'How can I start using available support for new students?',
+  'How do I access a specific question about campus?',
+  'How do I access resources for a certain topic?',
+  'How do I access locating information about events?',
+  'What resources are available for new students?',
+  'What resources are available for faculty members?',
+  'What resources are available for alumni support?',
+  'What events are happening on campus this week?',
+  'What events are happening on topics like academics or health?',
+  'What events are happening on ways to connect with other students?'
+];
+</script>
+{% endblock %}
+
+{% block suggestions %}
+<div class="btn-group dropup">
+  <button type="button" class="option-button btn-option-1 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="setPrompt('How can I start using...')">Get Started</button>
+  <div class="dropdown-menu">
+    <button type="button" class="dropdown-item" onclick="setPrompt('How can I start using school resources for my needs?')">How can I start using <strong>school resources for my needs?</strong></button>
+    <button type="button" class="dropdown-item" onclick="setPrompt('How can I start using technology or services here?')">How can I start using <strong>technology or services here?</strong></button>
+    <button type="button" class="dropdown-item" onclick="setPrompt('How can I start using available support for new students?')">How can I start using <strong>available support for new students?</strong></button>
+  </div>
+</div>
+
+<div class="btn-group dropup">
+  <button type="button" class="option-button btn-option-2 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="setPrompt('Can you help me with...')">Ask a Question</button>
+  <div class="dropdown-menu">
+    <button type="button" class="dropdown-item" onclick="setPrompt('How do I access a specific question about campus?')">How do I access <strong>a specific question about campus?</strong></button>
+    <button type="button" class="dropdown-item" onclick="setPrompt('How do I access resources for a certain topic?')">How do I access <strong>resources for a certain topic?</strong></button>
+    <button type="button" class="dropdown-item" onclick="setPrompt('How do I access locating information about events?')">How do I access <strong>locating information about events?</strong></button>
+  </div>
+</div>
+
+<div class="btn-group dropup">
+  <button type="button" class="option-button btn-option-3 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="setPrompt('What resources are available for...')">Explore All Resources</button>
+  <div class="dropdown-menu">
+    <button type="button" class="dropdown-item" onclick="setPrompt('What resources are available for new students?')">What resources are available for <strong>new students?</strong></button>
+    <button type="button" class="dropdown-item" onclick="setPrompt('What resources are available for faculty members?')">What resources are available for <strong>faculty members?</strong></button>
+    <button type="button" class="dropdown-item" onclick="setPrompt('What resources are available for alumni support?')">What resources are available for <strong>alumni support?</strong></button>
+  </div>
+</div>
+
+<div class="btn-group dropup">
+  <button type="button" class="option-button btn-option-4 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="setPrompt('What events are happening on...')">Learn About Campus Events</button>
+  <div class="dropdown-menu">
+    <button type="button" class="dropdown-item" onclick="setPrompt('What events are happening on campus this week?')">What events are happening on <strong>campus this week?</strong></button>
+    <button type="button" class="dropdown-item" onclick="setPrompt('What events are happening on topics like academics or health?')">What events are happening on <strong>topics like academics or health?</strong></button>
+    <button type="button" class="dropdown-item" onclick="setPrompt('What events are happening on ways to connect with other students?')">What events are happening on <strong>ways to connect with other students?</strong></button>
+  </div>
+</div>
+
+<button type="button" class="option-button btn-option-surprise" onclick="surpriseSuggestions()">Surprise Me</button>
+{% endblock %}

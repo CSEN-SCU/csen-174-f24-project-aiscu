@@ -1,0 +1,66 @@
+{% extends 'chatbot.html' %} 
+{% block header %}
+<div class="card-header text-white">Services Chatbot</div>
+<div class="card-header text-white">
+  <b>Welcome! Ask me anything about services at SCU.</b>
+</div>
+{% endblock %}
+
+{% block surprise %}
+<script>
+const surprisePrompts= [
+  'What services are available for first-year students?',
+  'What services are available for students with disabilities?',
+  'What services are available for career guidance and counseling?',
+  'How can I apply for scholarships or grants?',
+  'How can I apply for work-study programs?',
+  'How can I apply for emergency financial assistance?',
+  'What are the housing options for undergraduate students?',
+  'What are the housing options for off-campus living?',
+  'What are the housing options for temporary accommodations?',
+  'How can I get information about campus shuttles?',
+  'How can I get information about public transportation routes?',
+  'How can I get information about carpooling or bike rentals?'
+];
+</script>
+{% endblock %}
+
+{% block suggestions %}
+<div class="btn-group dropup">
+  <button type="button" class="option-button btn-option-1 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="setPrompt('What services are available for...')">Explore Student Services</button>
+  <div class="dropdown-menu">
+    <button type="button" class="dropdown-item" onclick="setPrompt('What services are available for first-year students?')">What services are available for <strong>first-year students?</strong></button>
+    <button type="button" class="dropdown-item" onclick="setPrompt('What services are available for students with disabilities?')">What services are available for <strong>students with disabilities?</strong></button>
+    <button type="button" class="dropdown-item" onclick="setPrompt('What services are available for career guidance and counseling?')">What services are available for <strong>career guidance and counseling?</strong></button>
+  </div>
+</div>
+
+<div class="btn-group dropup">
+  <button type="button" class="option-button btn-option-2 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="setPrompt('How can I apply for...')">Ask About Financial Aid</button>
+  <div class="dropdown-menu">
+    <button type="button" class="dropdown-item" onclick="setPrompt('How can I apply for scholarships or grants?')">        How can I apply for <strong>scholarships or grants?        </strong></button>
+    <button type="button" class="dropdown-item" onclick="setPrompt('How can I apply for work-study programs?')">           How can I apply for <strong>work-study programs?           </strong></button>
+    <button type="button" class="dropdown-item" onclick="setPrompt('How can I apply for emergency financial assistance?')">How can I apply for <strong>emergency financial assistance?</strong></button>
+  </div>
+</div>
+
+<div class="btn-group dropup">
+  <button type="button" class="option-button btn-option-3 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="setPrompt('What are the housing options for...')">Learn About Housing Options</button>
+  <div class="dropdown-menu">
+    <button type="button" class="dropdown-item" onclick="setPrompt('What are the housing options for undergraduate students?')">   What are the housing options for <strong>undergraduate students?  </strong></button>
+    <button type="button" class="dropdown-item" onclick="setPrompt('What are the housing options for off-campus living?')">        What are the housing options for <strong>off-campus living?       </strong></button>
+    <button type="button" class="dropdown-item" onclick="setPrompt('What are the housing options for temporary accommodations?')"> What are the housing options for <strong>temporary accommodations?</strong></button>
+  </div>
+</div>
+
+<div class="btn-group dropup">
+  <button type="button" class="option-button btn-option-4 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="setPrompt('How can I get information about...')">Find Transportation Info</button>
+  <div class="dropdown-menu">
+    <button type="button" class="dropdown-item" onclick="setPrompt('How can I get information about campus shuttles?')">             How can I get information about <strong>campus shuttles?             </strong></button>
+    <button type="button" class="dropdown-item" onclick="setPrompt('How can I get information about public transportation routes?')">How can I get information about <strong>public transportation routes?</strong></button>
+    <button type="button" class="dropdown-item" onclick="setPrompt('How can I get information about carpooling or bike rentals?')">  How can I get information about <strong>carpooling or bike rentals?  </strong></button>
+  </div>
+</div>
+
+<button type="button" class="option-button btn-option-surprise" onclick="surpriseSuggestions()">Surprise Me</button>
+{% endblock %}
