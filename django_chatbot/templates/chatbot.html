@@ -165,7 +165,7 @@
     <div class="input-group">
       <input id="userPrompt" type="text" class="form-control message-input" placeholder="Type your message..." />
       <div class="input-group-append">
-        <button id="send-btn" type="submit" class="btn btn-primary btn-send">Send</button>
+        <button id="send-btn" type="submit" class="btn btn-primary btn-send"><i class="bi bi-send"></i></button>
       </div>
     </div>
   </form>
@@ -249,12 +249,19 @@
             </div>` : ''}
         </div>
           `;
-        const clipboard = document.createElement('div');
-        clipboard.innerHTML=`<button onclick="copyText(this, \`${response}\`)" style="border:none;"><i class="fa-regular fa-clipboard" style="font-size: 40px;"></i></button>`;
-
+	const shareButtons = document.createElement('div');
+	shareButtons.style.paddingLeft = '5px';
+	shareButtons.innerHTML=`
+      <button onclick="copyText(this, \`${response}\`)" style="border:none; font-size:35px; width:30.75px">
+        <i class="fa-regular fa-clipboard" style="font-size: 25px;"></i>
+      </button>
+      <button onclick="shareText(this, \`${response}\`)" style="border:none; font-size:35px;">
+        <i class="bi bi-share" style="font-size: 20px;"></i>
+      </button>
+      `;
         messagesList.removeChild(messagesList.lastElementChild);
         messagesList.appendChild(messageItem);
-        messageItem.appendChild(clipboard);
+        messageItem.appendChild(shareButtons);
         messageItem.scrollIntoView();
         sendButton.toggleAttribute('disabled');
         chatHistory.push(message);
@@ -269,8 +276,9 @@
     var save = button.innerHTML;
 
     navigator.clipboard.writeText(text).then(() => {
-      button.style.fontSize='30px';
-      button.innerHTML='&#10003;'
+      button.innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16" transform="translate(-8, 0)">
+  <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"/>
+</svg>`
       setTimeout(() => {button.innerHTML=save; button.disabled=false;}, 3000);
     }).catch((err) => {
       console.error('Failed to copy text: ', err);
@@ -278,6 +286,16 @@
     });
   }
 
+  function shareText(button, text) {
+    if (button.disabled) return;
+
+    navigator.share({
+        text: text
+    }).catch(err => {
+      console.error('Failed to copy text: ', err);
+      button.disabled = false;
+    })
+  };
 
   let clicked=false;
 
