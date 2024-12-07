@@ -62,25 +62,6 @@
     background-color: #0062cc;
   }
 
-  /*
-  .login-link {
-    margin-top: 20px;
-    font-size: 16px;
-    color: white;
-  }
-
-  .login-link a {
-    color: #007bff;
-    text-decoration: none;
-    font-weight: bold;
-  }
-
-  .login-link a:hover {
-    text-decoration: underline;
-  }
-  */
-
-  /* */
   /* Main page styling */
   .main-container {
     display: flex;
@@ -148,33 +129,10 @@
     background-color: #d9d9d9;
   }
 
-  /* .btn-code { background-color: #e1f5fe; }
-  .btn-summarize { background-color: #fff3e0; }
-  .btn-advice { background-color: #e8f5e9; }
-  .btn-surprise { background-color: #f3e5f5; }
-  .btn-more { background-color: #ede7f6; } */
-  
-  /* */
-
 </style>
 {% endblock %}
 
 {% block content %}
-<!-- <div class="main-container">
-  <div class="title">What can I help with?</div>
-  <div class="input-container">
-    <input type="text" class="input-prompt" placeholder="Type your prompt here..." id="userPrompt">
-    <button class="btn-search" onclick="submitPrompt()">Search</button>
-  </div>
-  <div class="options-container">
-    <button class="option-button btn-code">Code</button>
-    <button class="option-button btn-summarize">Summarize text</button>
-    <button class="option-button btn-advice">Get advice</button>
-    <button class="option-button btn-surprise">Surprise me</button>
-    <button class="option-button btn-more">More</button>
-  </div>
-</div> -->
-
 
 <div class="home-container">
   <form class="message-form">
@@ -272,14 +230,5 @@
   });
 
 </script>
-
-<!-- <script>
-  function submitPrompt() {
-    const userPrompt = document.getElementById('userPrompt').value;
-    if (userPrompt.trim() !== '') {
-      window.location.href = `/chatbot?prompt=${encodeURIComponent(userPrompt)}`;
-    }
-  }
-</script> -->
 
 {% endblock %}
