@@ -117,4 +117,4 @@ def ask_openai(chat_history, message, request):
     print(result["answer"])
     print(sources)
     
-    return result["answer"].split(":", 1)[1] if ':' in result['answer']
+    return result["answer"].split(":", 1)[1] if ':' in result['answer'] else result['answer'], list(sources)

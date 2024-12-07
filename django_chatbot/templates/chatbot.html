@@ -120,7 +120,19 @@
   div#suggestions * {
     white-space: normal !important; word-wrap: break-word;
   }
+
+  .dropdown-menu {
+    width: max-content !important; 
+    max-width: calc(100vw - 10px);
+  } 
   
+  .dropdown-item {
+    font-size:20px !important;
+  }
+
+  .input-group * {
+    font-size:18px !important;
+  }
 
 </style>
 {% endblock %}
@@ -237,13 +249,39 @@
             </div>` : ''}
         </div>
           `;
+        const clipboard = document.createElement('div');
+        clipboard.innerHTML=`<button onclick="copyText(this, \`${response}\`)" style="border:none;"><i class="fa-regular fa-clipboard" style="font-size: 40px;"></i></button>`;
+
         messagesList.removeChild(messagesList.lastElementChild);
         messagesList.appendChild(messageItem);
+        messageItem.appendChild(clipboard);
         messageItem.scrollIntoView();
         sendButton.toggleAttribute('disabled');
         chatHistory.push(message);
         chatHistory.push(response);
       });
+  });
+
+  function copyText(button, text) {
+    navigator.clipboard.writeText(text);
+    var save = button.innerHTML;
+    button.style.fontSize='30px';
+    button.innerHTML='&#10003;'
+    setTimeout(() => {button.innerHTML=save}, 3000);
+  }
+
+  let clicked=false;
+
+  $(document).ready(() => {
+    $(".dropdown-menu button").click(() => {
+        clicked=true;
+    });
+
+    $('.dropup').on('hide.bs.dropdown', function () {
+      if (!clicked)
+        messageInput.value="";
+      clicked=false;
+    });
   });
 
   window.addEventListener('beforeunload', (event) => {
@@ -260,6 +298,7 @@
 
   function setPrompt(promptText) {
     document.getElementById('userPrompt').value = promptText;
+    setTimeout(()=>document.getElementById('userPrompt').value = promptText, 0);
   }
 
   function surpriseSuggestions() {
