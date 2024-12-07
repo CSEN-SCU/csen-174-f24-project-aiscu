@@ -1,2 +1,6 @@
 .DS_Store
 .env
+*.log
+*.out
+get-pip.py
+
