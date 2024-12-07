@@ -177,16 +177,11 @@
 
 
 <div class="home-container">
-  <div class="header">
-    <h1 style="color: white">A<strong style="text-decoration:underline;">I</strong>S<strong style="text-decoration:underline;">CU</strong></h1>
-    <p style="color: white">Expert-supported help for tough SCU questions and navigation. Ask away.</p>
-  </div>
-  
-  <!-- <div class="search-bar">
-    <input type="text" placeholder="What would you like help with today?">
-    <button>Search</button>
-  </div> -->
   <form class="message-form">
+    <div class="header">
+      <h1 style="color: white">A<strong style="text-decoration:underline;">I</strong>S<strong style="text-decoration:underline;">CU</strong></h1>
+      <p style="color: white;margin-left:10px;margin-right:10px;">Expert-supported help for tough SCU questions and navigation. Ask away.</p>
+    </div>
     {% csrf_token %}
     <div class="options-container">
       <button id="academic-index" type="button" class="btn btn-primary btn-lg">Academics</button>

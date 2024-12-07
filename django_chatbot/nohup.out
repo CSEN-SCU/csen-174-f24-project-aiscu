@@ -1,0 +1,940 @@
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Invalid HTTP_HOST header: 'd76b-34-207-163-88.ngrok-free.app'. You may need to add 'd76b-34-207-163-88.ngrok-free.app' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/ec2-user/.local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/.local/lib/python3.11/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/.local/lib/python3.11/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/.local/lib/python3.11/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'd76b-34-207-163-88.ngrok-free.app'. You may need to add 'd76b-34-207-163-88.ngrok-free.app' to ALLOWED_HOSTS.
+Bad Request: /
+[05/Dec/2024 00:46:38] "GET / HTTP/1.1" 400 66499
+Invalid HTTP_HOST header: 'd76b-34-207-163-88.ngrok-free.app'. You may need to add 'd76b-34-207-163-88.ngrok-free.app' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/ec2-user/.local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/.local/lib/python3.11/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/.local/lib/python3.11/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/.local/lib/python3.11/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'd76b-34-207-163-88.ngrok-free.app'. You may need to add 'd76b-34-207-163-88.ngrok-free.app' to ALLOWED_HOSTS.
+Bad Request: /favicon.ico
+[05/Dec/2024 00:46:38] "GET /favicon.ico HTTP/1.1" 400 66348
+/home/ec2-user/csen-174-f24-project-aiscu/django_chatbot/django_chatbot/settings.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+December 05, 2024 - 00:45:34
+Django version 5.1.4, using settings 'django_chatbot.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+Invalid HTTP_HOST header: 'd76b-34-207-163-88.ngrok-free.app'. You may need to add 'd76b-34-207-163-88.ngrok-free.app' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/ec2-user/.local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/.local/lib/python3.11/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/.local/lib/python3.11/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/.local/lib/python3.11/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'd76b-34-207-163-88.ngrok-free.app'. You may need to add 'd76b-34-207-163-88.ngrok-free.app' to ALLOWED_HOSTS.
+Bad Request: /
+[05/Dec/2024 00:47:14] "GET / HTTP/1.1" 400 66750
+Invalid HTTP_HOST header: 'd76b-34-207-163-88.ngrok-free.app'. You may need to add 'd76b-34-207-163-88.ngrok-free.app' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/ec2-user/.local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/.local/lib/python3.11/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/.local/lib/python3.11/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/.local/lib/python3.11/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'd76b-34-207-163-88.ngrok-free.app'. You may need to add 'd76b-34-207-163-88.ngrok-free.app' to ALLOWED_HOSTS.
+Bad Request: /favicon.ico
+[05/Dec/2024 00:47:14] "GET /favicon.ico HTTP/1.1" 400 66462
+Watching for file changes with StatReloader
+Invalid HTTP_HOST header: 'd76b-34-207-163-88.ngrok-free.app'. You may need to add 'd76b-34-207-163-88.ngrok-free.app' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/ec2-user/.local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/.local/lib/python3.11/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/.local/lib/python3.11/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/.local/lib/python3.11/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'd76b-34-207-163-88.ngrok-free.app'. You may need to add 'd76b-34-207-163-88.ngrok-free.app' to ALLOWED_HOSTS.
+Bad Request: /
+[05/Dec/2024 00:49:35] "GET / HTTP/1.1" 400 66954
+Invalid HTTP_HOST header: 'd76b-34-207-163-88.ngrok-free.app'. You may need to add 'd76b-34-207-163-88.ngrok-free.app' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/ec2-user/.local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/.local/lib/python3.11/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/.local/lib/python3.11/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/.local/lib/python3.11/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'd76b-34-207-163-88.ngrok-free.app'. You may need to add 'd76b-34-207-163-88.ngrok-free.app' to ALLOWED_HOSTS.
+Bad Request: /favicon.ico
+[05/Dec/2024 00:49:36] "GET /favicon.ico HTTP/1.1" 400 66666
+/home/ec2-user/csen-174-f24-project-aiscu/django_chatbot/django_chatbot/settings.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+December 05, 2024 - 00:49:34
+Django version 5.1.4, using settings 'django_chatbot.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+[05/Dec/2024 00:50:48] "GET / HTTP/1.1" 200 8256
+Not Found: /favicon.ico
+[05/Dec/2024 00:50:48] "GET /favicon.ico HTTP/1.1" 404 3089
+Forbidden (Origin checking failed - https://d76b-34-207-163-88.ngrok-free.app does not match any trusted origins.): /index
+[05/Dec/2024 00:50:49] "POST /index HTTP/1.1" 403 2574
+[05/Dec/2024 00:50:49] "GET /index HTTP/1.1" 302 0
+[05/Dec/2024 00:50:49] "GET /chat HTTP/1.1" 200 8256
+Forbidden (Origin checking failed - https://d76b-34-207-163-88.ngrok-free.app does not match any trusted origins.): /index
+[05/Dec/2024 00:50:51] "POST /index HTTP/1.1" 403 2574
+[05/Dec/2024 00:50:51] "GET /index HTTP/1.1" 302 0
+[05/Dec/2024 00:50:51] "GET /chat HTTP/1.1" 200 8256
+Forbidden (Origin checking failed - https://d76b-34-207-163-88.ngrok-free.app does not match any trusted origins.): /index
+[05/Dec/2024 00:50:52] "POST /index HTTP/1.1" 403 2574
+[05/Dec/2024 00:50:52] "GET /index HTTP/1.1" 302 0
+[05/Dec/2024 00:50:52] "GET /chat HTTP/1.1" 200 8256
+Forbidden (Origin checking failed - https://d76b-34-207-163-88.ngrok-free.app does not match any trusted origins.): /index
+[05/Dec/2024 00:50:53] "POST /index HTTP/1.1" 403 2574
+[05/Dec/2024 00:50:53] "GET /index HTTP/1.1" 302 0
+[05/Dec/2024 00:50:53] "GET /chat HTTP/1.1" 200 8256
+Forbidden (Origin checking failed - https://d76b-34-207-163-88.ngrok-free.app does not match any trusted origins.): /index
+[05/Dec/2024 00:50:53] "POST /index HTTP/1.1" 403 2574
+[05/Dec/2024 00:50:53] "GET /index HTTP/1.1" 302 0
+[05/Dec/2024 00:50:53] "GET /chat HTTP/1.1" 200 8256
+Forbidden (Origin checking failed - https://d76b-34-207-163-88.ngrok-free.app does not match any trusted origins.): /index
+[05/Dec/2024 00:50:54] "POST /index HTTP/1.1" 403 2574
+[05/Dec/2024 00:50:54] "GET /index HTTP/1.1" 302 0
+[05/Dec/2024 00:50:54] "GET /chat HTTP/1.1" 200 8256
+Forbidden (Origin checking failed - https://d76b-34-207-163-88.ngrok-free.app does not match any trusted origins.): /index
+[05/Dec/2024 00:50:55] "POST /index HTTP/1.1" 403 2574
+[05/Dec/2024 00:50:55] "GET /index HTTP/1.1" 302 0
+[05/Dec/2024 00:50:55] "GET /chat HTTP/1.1" 200 8256
+Forbidden (Origin checking failed - https://d76b-34-207-163-88.ngrok-free.app does not match any trusted origins.): /index
+[05/Dec/2024 00:50:56] "POST /index HTTP/1.1" 403 2574
+[05/Dec/2024 00:50:56] "GET /index HTTP/1.1" 302 0
+[05/Dec/2024 00:50:56] "GET /chat HTTP/1.1" 200 8256
+Forbidden (Origin checking failed - https://d76b-34-207-163-88.ngrok-free.app does not match any trusted origins.): /index
+[05/Dec/2024 00:50:56] "POST /index HTTP/1.1" 403 2574
+[05/Dec/2024 00:50:56] "GET /index HTTP/1.1" 302 0
+[05/Dec/2024 00:50:57] "GET /chat HTTP/1.1" 200 8256
+Watching for file changes with StatReloader
+[05/Dec/2024 00:53:30] "GET /chat HTTP/1.1" 200 8256
+[05/Dec/2024 00:54:06] "POST /index HTTP/1.1" 302 0
+[05/Dec/2024 00:54:06] "GET /index HTTP/1.1" 302 0
+[05/Dec/2024 00:54:06] "GET /chat HTTP/1.1" 200 17386
+/home/ec2-user/.local/lib/python3.11/site-packages/langchain/llms/__init__.py:549: LangChainDeprecationWarning: Importing LLMs from langchain is deprecated. Importing from langchain will no longer be supported as of langchain==0.2.0. Please import from langchain-community instead:
+
+`from langchain_community.llms import OpenAI`.
+
+To install langchain-community run `pip install -U langchain-community`.
+  warnings.warn(
+/home/ec2-user/.local/lib/python3.11/site-packages/langchain/llms/__init__.py:549: LangChainDeprecationWarning: Importing LLMs from langchain is deprecated. Importing from langchain will no longer be supported as of langchain==0.2.0. Please import from langchain-community instead:
+
+`from langchain_community.llms import OpenAI`.
+
+To install langchain-community run `pip install -U langchain-community`.
+  warnings.warn(
+/home/ec2-user/csen-174-f24-project-aiscu/django_chatbot/chatbot/views.py:47: LangChainDeprecationWarning: The class `OpenAI` was deprecated in LangChain 0.0.10 and will be removed in 1.0. An updated version of the class exists in the :class:`~langchain-openai package and should be used instead. To use it run `pip install -U :class:`~langchain-openai` and import as `from :class:`~langchain_openai import OpenAI``.
+  llm=OpenAI()
+[05/Dec/2024 00:55:12] "POST /chat HTTP/1.1" 200 814
+[05/Dec/2024 01:00:44] "GET /chat HTTP/1.1" 200 17386
+[05/Dec/2024 01:00:44] "POST /clear HTTP/1.1" 302 0
+Not Found: /apple-touch-icon-precomposed.png
+Not Found: /apple-touch-icon.png
+[05/Dec/2024 01:01:14] "GET /apple-touch-icon-precomposed.png HTTP/1.1" 404 3152
+[05/Dec/2024 01:01:14] "GET /apple-touch-icon.png HTTP/1.1" 404 3116
+Not Found: /favicon.ico
+[05/Dec/2024 01:01:14] "GET /favicon.ico HTTP/1.1" 404 3089
+[05/Dec/2024 01:01:15] "GET /chat HTTP/1.1" 200 8256
+[05/Dec/2024 01:01:17] "GET /chat HTTP/1.1" 200 8256
+[05/Dec/2024 01:01:23] "GET /chat HTTP/1.1" 200 8256
+Not Found: /favicon.ico
+[05/Dec/2024 01:01:25] "GET /favicon.ico HTTP/1.1" 404 3089
+[05/Dec/2024 01:01:28] "POST /index HTTP/1.1" 302 0
+[05/Dec/2024 01:01:28] "GET /index HTTP/1.1" 302 0
+[05/Dec/2024 01:01:28] "GET /chat HTTP/1.1" 200 17386
+/home/ec2-user/.local/lib/python3.11/site-packages/langchain/llms/__init__.py:549: LangChainDeprecationWarning: Importing LLMs from langchain is deprecated. Importing from langchain will no longer be supported as of langchain==0.2.0. Please import from langchain-community instead:
+
+`from langchain_community.llms import OpenAI`.
+
+To install langchain-community run `pip install -U langchain-community`.
+  warnings.warn(
+[05/Dec/2024 01:04:15] "GET /chat HTTP/1.1" 200 8256
+Not Found: /favicon.ico
+[05/Dec/2024 01:04:15] "GET /favicon.ico HTTP/1.1" 404 3089
+[05/Dec/2024 01:04:16] "POST /index HTTP/1.1" 302 0
+[05/Dec/2024 01:04:16] "GET /index HTTP/1.1" 302 0
+[05/Dec/2024 01:04:16] "GET /chat HTTP/1.1" 200 17138
+/home/ec2-user/.local/lib/python3.11/site-packages/langchain/llms/__init__.py:549: LangChainDeprecationWarning: Importing LLMs from langchain is deprecated. Importing from langchain will no longer be supported as of langchain==0.2.0. Please import from langchain-community instead:
+
+`from langchain_community.llms import OpenAI`.
+
+To install langchain-community run `pip install -U langchain-community`.
+  warnings.warn(
+[05/Dec/2024 01:04:52] "POST /chat HTTP/1.1" 200 702
+Not Found: /apple-touch-icon-precomposed.png
+Not Found: /favicon.ico
+[05/Dec/2024 01:09:45] "GET /apple-touch-icon-precomposed.png HTTP/1.1" 404 3152
+[05/Dec/2024 01:09:45] "GET /favicon.ico HTTP/1.1" 404 3089
+Not Found: /apple-touch-icon.png
+[05/Dec/2024 01:09:45] "GET /apple-touch-icon.png HTTP/1.1" 404 3116
+[05/Dec/2024 01:09:45] "GET /chat HTTP/1.1" 200 8256
+[05/Dec/2024 01:12:40] "GET /chat HTTP/1.1" 200 8256
+Not Found: /favicon.ico
+[05/Dec/2024 01:12:41] "GET /favicon.ico HTTP/1.1" 404 3089
+[05/Dec/2024 01:12:56] "POST /index HTTP/1.1" 302 0
+[05/Dec/2024 01:12:56] "GET /index HTTP/1.1" 302 0
+[05/Dec/2024 01:12:56] "GET /chat HTTP/1.1" 200 17333
+[05/Dec/2024 01:13:02] "GET /chat HTTP/1.1" 200 8256
+Not Found: /favicon.ico
+[05/Dec/2024 01:13:03] "GET /favicon.ico HTTP/1.1" 404 3089
+[05/Dec/2024 01:13:07] "POST /index HTTP/1.1" 302 0
+[05/Dec/2024 01:13:07] "GET /index HTTP/1.1" 302 0
+[05/Dec/2024 01:13:08] "GET /chat HTTP/1.1" 200 17396
+[05/Dec/2024 01:13:12] "POST /index HTTP/1.1" 302 0
+[05/Dec/2024 01:13:13] "GET /index HTTP/1.1" 302 0
+[05/Dec/2024 01:13:13] "GET /chat HTTP/1.1" 200 17138
+[05/Dec/2024 01:13:14] "POST /index HTTP/1.1" 302 0
+[05/Dec/2024 01:13:15] "GET /index HTTP/1.1" 302 0
+[05/Dec/2024 01:13:15] "GET /chat HTTP/1.1" 200 17386
+/home/ec2-user/.local/lib/python3.11/site-packages/langchain/llms/__init__.py:549: LangChainDeprecationWarning: Importing LLMs from langchain is deprecated. Importing from langchain will no longer be supported as of langchain==0.2.0. Please import from langchain-community instead:
+
+`from langchain_community.llms import OpenAI`.
+
+To install langchain-community run `pip install -U langchain-community`.
+  warnings.warn(
+[05/Dec/2024 01:14:03] "GET /chat HTTP/1.1" 200 17138
+[05/Dec/2024 01:14:03] "POST /clear HTTP/1.1" 302 0
+[05/Dec/2024 01:14:19] "GET /chat HTTP/1.1" 200 8256
+[05/Dec/2024 01:14:19] "POST /clear HTTP/1.1" 302 0
+[05/Dec/2024 01:14:35] "POST /chat HTTP/1.1" 200 839
+[05/Dec/2024 01:14:52] "GET /chat HTTP/1.1" 200 17386
+[05/Dec/2024 01:16:03] "GET /chat HTTP/1.1" 200 8256
+[05/Dec/2024 01:16:13] "POST /index HTTP/1.1" 302 0
+[05/Dec/2024 01:16:13] "GET /index HTTP/1.1" 302 0
+[05/Dec/2024 01:16:13] "GET /chat HTTP/1.1" 200 17386
+[05/Dec/2024 01:27:29] "GET /chat HTTP/1.1" 200 8256
+Not Found: /apple-touch-icon-precomposed.png
+[05/Dec/2024 01:27:30] "GET /apple-touch-icon-precomposed.png HTTP/1.1" 404 3152
+Not Found: /apple-touch-icon.png
+[05/Dec/2024 01:27:30] "GET /apple-touch-icon.png HTTP/1.1" 404 3116
+Not Found: /favicon.ico
+[05/Dec/2024 01:27:30] "GET /favicon.ico HTTP/1.1" 404 3089
+Not Found: /apple-touch-icon-precomposed.png
+[05/Dec/2024 01:27:30] "GET /apple-touch-icon-precomposed.png HTTP/1.1" 404 3152
+Not Found: /apple-touch-icon.png
+[05/Dec/2024 01:27:30] "GET /apple-touch-icon.png HTTP/1.1" 404 3116
+Not Found: /favicon.ico
+[05/Dec/2024 01:27:30] "GET /favicon.ico HTTP/1.1" 404 3089
+[05/Dec/2024 01:27:31] "GET /chat HTTP/1.1" 200 8256
+Not Found: /apple-touch-icon-precomposed.png
+[05/Dec/2024 01:27:31] "GET /apple-touch-icon-precomposed.png HTTP/1.1" 404 3152
+Not Found: /apple-touch-icon.png
+[05/Dec/2024 01:27:31] "GET /apple-touch-icon.png HTTP/1.1" 404 3116
+Not Found: /favicon.ico
+[05/Dec/2024 01:27:31] "GET /favicon.ico HTTP/1.1" 404 3089
+Not Found: /apple-touch-icon-precomposed.png
+[05/Dec/2024 01:27:31] "GET /apple-touch-icon-precomposed.png HTTP/1.1" 404 3152
+Not Found: /apple-touch-icon.png
+[05/Dec/2024 01:27:31] "GET /apple-touch-icon.png HTTP/1.1" 404 3116
+Not Found: /favicon.ico
+[05/Dec/2024 01:27:32] "GET /favicon.ico HTTP/1.1" 404 3089
+[05/Dec/2024 01:41:23] "GET /chat HTTP/1.1" 200 8256
+Not Found: /favicon.ico
+[05/Dec/2024 01:41:24] "GET /favicon.ico HTTP/1.1" 404 3089
+[05/Dec/2024 03:38:53] "GET /chat HTTP/1.1" 200 8256
+Not Found: /favicon.ico
+[05/Dec/2024 03:38:54] "GET /favicon.ico HTTP/1.1" 404 3089
+[05/Dec/2024 10:26:24] "GET /chat HTTP/1.1" 200 8256
+[05/Dec/2024 10:26:30] "POST /index HTTP/1.1" 302 0
+[05/Dec/2024 10:26:30] "GET /index HTTP/1.1" 302 0
+[05/Dec/2024 10:26:30] "GET /chat HTTP/1.1" 200 17396
+/home/ec2-user/.local/lib/python3.11/site-packages/langchain/llms/__init__.py:549: LangChainDeprecationWarning: Importing LLMs from langchain is deprecated. Importing from langchain will no longer be supported as of langchain==0.2.0. Please import from langchain-community instead:
+
+`from langchain_community.llms import OpenAI`.
+
+To install langchain-community run `pip install -U langchain-community`.
+  warnings.warn(
+[05/Dec/2024 10:26:54] "POST /chat HTTP/1.1" 200 490
+[05/Dec/2024 18:34:35] "GET /chat HTTP/1.1" 200 8256
+Not Found: /favicon.ico
+[05/Dec/2024 18:34:36] "GET /favicon.ico HTTP/1.1" 404 3089
+[05/Dec/2024 18:34:39] "POST /index HTTP/1.1" 302 0
+[05/Dec/2024 18:34:40] "GET /index HTTP/1.1" 302 0
+[05/Dec/2024 18:34:40] "GET /chat HTTP/1.1" 200 17396
+/home/ec2-user/.local/lib/python3.11/site-packages/langchain/llms/__init__.py:549: LangChainDeprecationWarning: Importing LLMs from langchain is deprecated. Importing from langchain will no longer be supported as of langchain==0.2.0. Please import from langchain-community instead:
+
+`from langchain_community.llms import OpenAI`.
+
+To install langchain-community run `pip install -U langchain-community`.
+  warnings.warn(
+[05/Dec/2024 18:34:46] "POST /chat HTTP/1.1" 200 634
+[05/Dec/2024 18:35:18] "POST /clear HTTP/1.1" 302 0
+[05/Dec/2024 18:35:18] "GET /chat HTTP/1.1" 200 8256
+[05/Dec/2024 18:36:06] "POST /index HTTP/1.1" 302 0
+[05/Dec/2024 18:36:06] "GET /index HTTP/1.1" 302 0
+[05/Dec/2024 18:36:06] "GET /chat HTTP/1.1" 200 17386
+/home/ec2-user/.local/lib/python3.11/site-packages/langchain/llms/__init__.py:549: LangChainDeprecationWarning: Importing LLMs from langchain is deprecated. Importing from langchain will no longer be supported as of langchain==0.2.0. Please import from langchain-community instead:
+
+`from langchain_community.llms import OpenAI`.
+
+To install langchain-community run `pip install -U langchain-community`.
+  warnings.warn(
+[05/Dec/2024 18:36:12] "POST /chat HTTP/1.1" 200 907
+[05/Dec/2024 18:37:01] "POST /clear HTTP/1.1" 302 0
+[05/Dec/2024 18:37:01] "GET /chat HTTP/1.1" 200 8256
+[05/Dec/2024 18:37:01] "GET /chat HTTP/1.1" 200 8256
+[05/Dec/2024 18:38:14] "POST /index HTTP/1.1" 302 0
+[05/Dec/2024 18:38:14] "GET /index HTTP/1.1" 302 0
+[05/Dec/2024 18:38:14] "GET /chat HTTP/1.1" 200 17339
+/home/ec2-user/.local/lib/python3.11/site-packages/langchain/llms/__init__.py:549: LangChainDeprecationWarning: Importing LLMs from langchain is deprecated. Importing from langchain will no longer be supported as of langchain==0.2.0. Please import from langchain-community instead:
+
+`from langchain_community.llms import OpenAI`.
+
+To install langchain-community run `pip install -U langchain-community`.
+  warnings.warn(
+[05/Dec/2024 18:38:35] "POST /chat HTTP/1.1" 200 1036
+[05/Dec/2024 18:38:57] "POST /clear HTTP/1.1" 302 0
+[05/Dec/2024 18:38:57] "GET /chat HTTP/1.1" 200 8256
+[05/Dec/2024 18:38:58] "POST /index HTTP/1.1" 302 0
+[05/Dec/2024 18:38:58] "GET /index HTTP/1.1" 302 0
+[05/Dec/2024 18:38:58] "GET /chat HTTP/1.1" 200 17339
+/home/ec2-user/.local/lib/python3.11/site-packages/langchain/llms/__init__.py:549: LangChainDeprecationWarning: Importing LLMs from langchain is deprecated. Importing from langchain will no longer be supported as of langchain==0.2.0. Please import from langchain-community instead:
+
+`from langchain_community.llms import OpenAI`.
+
+To install langchain-community run `pip install -U langchain-community`.
+  warnings.warn(
+[05/Dec/2024 18:39:08] "POST /chat HTTP/1.1" 200 519
+/home/ec2-user/.local/lib/python3.11/site-packages/langchain/llms/__init__.py:549: LangChainDeprecationWarning: Importing LLMs from langchain is deprecated. Importing from langchain will no longer be supported as of langchain==0.2.0. Please import from langchain-community instead:
+
+`from langchain_community.llms import OpenAI`.
+
+To install langchain-community run `pip install -U langchain-community`.
+  warnings.warn(
+[05/Dec/2024 18:39:21] "POST /chat HTTP/1.1" 200 273
+[05/Dec/2024 18:39:45] "GET /chat HTTP/1.1" 200 17339
+[05/Dec/2024 18:39:45] "POST /clear HTTP/1.1" 302 0
+[05/Dec/2024 18:39:48] "GET /chat HTTP/1.1" 200 8256
+[05/Dec/2024 18:39:48] "POST /clear HTTP/1.1" 302 0
+[05/Dec/2024 18:39:52] "POST /index HTTP/1.1" 302 0
+[05/Dec/2024 18:39:52] "GET /index HTTP/1.1" 302 0
+[05/Dec/2024 18:39:52] "GET /chat HTTP/1.1" 200 17138
+/home/ec2-user/.local/lib/python3.11/site-packages/langchain/llms/__init__.py:549: LangChainDeprecationWarning: Importing LLMs from langchain is deprecated. Importing from langchain will no longer be supported as of langchain==0.2.0. Please import from langchain-community instead:
+
+`from langchain_community.llms import OpenAI`.
+
+To install langchain-community run `pip install -U langchain-community`.
+  warnings.warn(
+[05/Dec/2024 18:39:59] "POST /chat HTTP/1.1" 200 398
+Performing system checks...
+
+System check identified no issues (0 silenced).
+December 05, 2024 - 00:53:28
+Django version 5.1.4, using settings 'django_chatbot.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CONTROL-C.
+
+What tech resources are available for faculty IT support?
+[]
+Time for response time: 61.789607524871826
+
+
+System: For faculty, there are several tech resources available for IT support. These include GSuite (Gmail, Google Drive, Google Forms), Qualtrics, Zoom, equipment checkout, Panopto editor training, classroom audio/visual equipment training, and University Library Subject Librarians. Additionally, Academic Technology offers faculty consultations for integrating technology into teaching and learning, as well as workshops on various technology tools and resources.
+{'https://www.scu.edu/is/academic-technology/instructional-continuity/support/', 'https://www.scu.edu/is/academic-technology/technology-enhanced-teaching/faculty-consultation/', 'https://www.scu.edu/is/academic-technology/technology-enhanced-teaching/'}
+What are the rules for using campus computers?
+[]
+Time for response time: 31.57111406326294
+
+
+System: The rules for using campus computers can be found in the End User Agreement and PCR Policies, which all end users are required to abide by when requesting a new device through PCR. These policies ensure a smooth and successful transition to the new computer for both the end user and the university. 
+{'https://www.scu.edu/technology/computing-services--support/personalstudent-purchases/', 'https://www.scu.edu/technology/computing-services--support/pc-replacement-program-pcr/pcr-policies/', 'https://www.scu.edu/technology/computing-services--support/software-/supported-software-and-downloads/sentinelone/campus-computers/'}
+What resources are available for alumni support?
+[]
+Time for response time: 31.63578510284424
+
+
+System: For alumni who have graduated more than five years ago, the Career Center offers one free career coaching session per calendar year. Additionally, there is a list of independent career coaches available to assist with your career journey. You can also utilize the Job Prep Toolkit for career preparation resources, and attend Career Center events such as virtual career fairs and employer sessions. The LEAD Scholars program also offers events and opportunities for alumni to stay involved and connect with current students. 
+{'https://www.scu.edu/careercenter/for-alumni/', 'https://www.scu.edu/lead/alumni/'}
+What are the rules for using tech resources after graduation?
+[]
+Time for response time: 62.17973017692566
+
+
+System: After graduation, your access to SCU technology resources will be discontinued. This includes Microsoft 365, Workday, Zoom, and other services. It is important to download any documents or files you want to keep before your access is removed. You can also sign up for a free personal account through Microsoft or a basic Zoom account directly through Zoom. Your SCU email and Google Workspace account will also be discontinued, so be sure to transfer ownership of any important files before graduation. Alumni can request an Alumni Email account through the Alumni Office within 90 days after graduation.
+{'https://www.scu.edu/technology/get-connected/logins--accounts/', 'https://www.scu.edu/technology/get-connected/microsoft-365/'}
+I would like help with my computer science class can you recommend any tutors?
+[]
+Time for response time: 2.914048433303833
+
+
+System: Of course! The Drahmann Center offers tutoring for CSCI 62, CSCI 161, and CSCI 163. You can also contact tutoringcenter@scu.edu to express interest in tutoring positions. Additionally, there may be tutors available through the Career Center at careercenter@scu.edu.
+{'https://www.scu.edu/drahmann/tutoring/', 'https://www.scu.edu/drahmann/tutoring/tutor-recruitment/'}
+Are there tutors or study groups for math and science subjects?
+[]
+Time for response time: 2.0535173416137695
+
+
+System: Yes, there are tutors and study groups available for math and science subjects through the Drahmann Center, Mathematics Learning Center, and HUB Writing Center. You can also find more information about tutoring and academic resources on the SCU website under "Academic Resources." Additionally, the Office of Accessible Education offers support for students with disabilities who may need accommodations for their studies. 
+{'https://www.scu.edu/drahmann/tutoring/', 'https://www.scu.edu/summer/tutoring-and-other-services/'}
+What tech resources are available for students needing laptops?
+[]
+Time for response time: 2.161045551300049
+ 
+
+System: SCU offers educational discounts on laptops and other hardware from Apple and Dell for students to purchase. Students can also access free SPSS software and other discounted software through the university's partnership with Journey Ed. The mobile SCU app provides easy access to campus news, events, maps, and more. Students can also use the Portfolium app to showcase their academic journey and goals. Additionally, SmartPrint is available for students to manage their printing needs. For more information on these resources, please visit the Technology Training section of the SCU website.
+{'https://www.scu.edu/technology/computing-services--support/personalstudent-purchases/', 'https://www.scu.edu/training/resources/students/', 'https://www.scu.edu/technology/quick-start-guide-for-students/'}
+I'm alone at a party and need to get back to my dorm.
+[]
+Time for response time: 2.3989787101745605
+
+
+System: It's always a good idea to go to parties with a friend, but if you find yourself alone and need to get back to your dorm safely, there are a few things you can do. First, make sure you have enough change for a phone call or have a ride arranged beforehand. If you're walking, try to stick to well-lit areas and avoid dark streets. Keep a firm grip on your belongings and be aware of your surroundings. If you feel uncomfortable or sense trouble, leave the area immediately. It's also a good idea to carry your keys in your hand so you can quickly get into your dorm. If you're feeling intimidated, yelling "Fire!" can be more effective than yelling for help. And remember, you can always contact Campus Safety for assistance.
+{'https://www.scu.edu/campus-safety/crime-prevention/', 'https://www.scu.edu/wellness/substance-use/substance-free-housing-community/', 'https://www.scu.edu/wellness/violence-prevention/bystander-intervention/'}
+Does SCU have an escort service avaliable?
+[]
+Time for response time: 1.4593193531036377
+
+
+System: Yes, Campus Safety provides security escorts to/from SCU property during the hours of darkness or upon special request. However, please note that the escort may be limited in distance based on staffing and activity levels. Escorts cannot be provided to bars or parties, or to run errands. To request an escort, please call (408) 554-4441.
+{'https://www.scu.edu/campus-safety/our-services/', 'https://www.scu.edu/campus-safety/faqs/'}
+What's the number?
+['Does SCU have an escort service avaliable?', ' Yes, Campus Safety provides security escorts to/from SCU property during the hours of darkness or upon special request. However, please note that the escort may be limited in distance based on staffing and activity levels. Escorts cannot be provided to bars or parties, or to run errands. To request an escort, please call (408) 554-4441.']
+Time for response time: 2.0988900661468506
+
+AI: The number to request an escort from Campus Safety is (408) 554-4441.
+{'https://www.scu.edu/campus-safety/our-services/', 'https://www.scu.edu/bewell/caps/getting-started/', 'https://www.scu.edu/title-ix/help/'}
+What's the number?
+[]
+Time for response time: 1.5900025367736816
+
+
+Sorry, I cannot provide a specific number as there are multiple numbers listed in this context. Please specify which number you are referring to.
+{'https://www.scu.edu/campus-safety/scu-bronco-alert/', 'https://www.scu.edu/bewell/resources/suicide-prevention/', 'https://www.scu.edu/osl/culture-of-care/campus--community-resources/'}
+Escort service
+/home/ec2-user/.local/lib/python3.11/site-packages/langchain/llms/__init__.py:549: LangChainDeprecationWarning: Importing LLMs from langchain is deprecated. Importing from langchain will no longer be supported as of langchain==0.2.0. Please import from langchain-community instead:
+
+`from langchain_community.llms import OpenAI`.
+
+To install langchain-community run `pip install -U langchain-community`.
+  warnings.warn(
+[05/Dec/2024 18:40:19] "POST /chat HTTP/1.1" 200 209
+[05/Dec/2024 19:16:52] "GET /chat HTTP/1.1" 200 17138
+[05/Dec/2024 19:16:56] "POST /clear HTTP/1.1" 302 0
+[05/Dec/2024 19:16:56] "GET /chat HTTP/1.1" 200 8256
+[05/Dec/2024 19:16:58] "POST /index HTTP/1.1" 302 0
+[05/Dec/2024 19:16:58] "GET /index HTTP/1.1" 302 0
+[05/Dec/2024 19:16:58] "GET /chat HTTP/1.1" 200 17138
+[05/Dec/2024 19:16:59] "GET /chat HTTP/1.1" 200 17138
+[05/Dec/2024 19:16:59] "POST /clear HTTP/1.1" 302 0
+[05/Dec/2024 19:17:01] "GET /chat HTTP/1.1" 200 8256
+[05/Dec/2024 19:17:01] "POST /clear HTTP/1.1" 302 0
+[05/Dec/2024 22:30:44] "GET /chat HTTP/1.1" 200 17386
+Not Found: /favicon.ico
+[05/Dec/2024 22:30:45] "GET /favicon.ico HTTP/1.1" 404 3089
+[05/Dec/2024 22:30:49] "GET /chat HTTP/1.1" 200 8256
+[05/Dec/2024 22:31:05] "POST /index HTTP/1.1" 302 0
+[05/Dec/2024 22:31:05] "GET /index HTTP/1.1" 302 0
+[05/Dec/2024 22:31:05] "GET /chat HTTP/1.1" 200 17138
+[05/Dec/2024 22:31:18] "POST /clear HTTP/1.1" 302 0
+[05/Dec/2024 22:53:20] "GET /chat HTTP/1.1" 200 8256
+Not Found: /favicon.ico
+[05/Dec/2024 22:53:20] "GET /favicon.ico HTTP/1.1" 404 3089
+[05/Dec/2024 22:57:36] "GET /chat HTTP/1.1" 200 8256
+Not Found: /favicon.ico
+[05/Dec/2024 22:57:37] "GET /favicon.ico HTTP/1.1" 404 3089
+[06/Dec/2024 06:54:42] "GET /chat HTTP/1.1" 200 17386
+[06/Dec/2024 06:54:49] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 06:54:53] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 06:54:53] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 06:54:53] "GET /chat HTTP/1.1" 200 17339
+[06/Dec/2024 06:55:10] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 06:55:11] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 06:55:12] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 06:55:12] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 06:55:12] "GET /chat HTTP/1.1" 200 17396
+[06/Dec/2024 06:55:14] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 06:55:15] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 06:55:17] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 06:55:17] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 06:55:17] "GET /chat HTTP/1.1" 200 17333
+[06/Dec/2024 06:55:21] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 06:55:22] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 06:55:23] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 06:55:23] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 06:55:23] "GET /chat HTTP/1.1" 200 17339
+[06/Dec/2024 06:55:25] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 06:55:26] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 06:55:27] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 06:55:27] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 06:55:28] "GET /chat HTTP/1.1" 200 17386
+[06/Dec/2024 06:55:30] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 06:55:31] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 06:55:32] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 06:55:32] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 06:55:32] "GET /chat HTTP/1.1" 200 17138
+[06/Dec/2024 06:55:36] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 06:55:37] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 06:55:38] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 06:55:38] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 06:55:38] "GET /chat HTTP/1.1" 200 17339
+[06/Dec/2024 06:55:46] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 06:55:47] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 06:55:48] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 06:55:48] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 06:55:48] "GET /chat HTTP/1.1" 200 17333
+[06/Dec/2024 06:56:06] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 06:56:07] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 06:56:08] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 06:56:08] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 06:56:08] "GET /chat HTTP/1.1" 200 17396
+[06/Dec/2024 06:56:13] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 06:56:13] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 06:56:15] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 06:56:15] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 06:56:15] "GET /chat HTTP/1.1" 200 17333
+[06/Dec/2024 06:56:17] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 06:56:18] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 06:56:19] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 06:56:19] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 06:56:19] "GET /chat HTTP/1.1" 200 17339
+[06/Dec/2024 06:56:21] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 06:56:22] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 06:56:23] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 06:56:23] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 06:56:23] "GET /chat HTTP/1.1" 200 17386
+[06/Dec/2024 06:56:25] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 06:56:25] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 06:56:26] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 06:56:27] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 06:56:27] "GET /chat HTTP/1.1" 200 17138
+Forbidden (CSRF token missing.): /clear
+[06/Dec/2024 06:56:29] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 06:56:30] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 06:56:55] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 06:56:55] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 06:56:55] "GET /chat HTTP/1.1" 200 17339
+[06/Dec/2024 06:58:02] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 06:58:03] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 06:58:06] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 06:58:06] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 06:58:06] "GET /chat HTTP/1.1" 200 17138
+[06/Dec/2024 06:58:20] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 06:58:21] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 06:58:22] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 06:58:22] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 06:58:22] "GET /chat HTTP/1.1" 200 17339
+[06/Dec/2024 20:09:36] "GET /chat HTTP/1.1" 200 17386
+[06/Dec/2024 20:09:42] "GET / HTTP/1.1" 200 8256
+[06/Dec/2024 20:09:42] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 20:09:45] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:09:45] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:09:45] "GET /chat HTTP/1.1" 200 17386
+[06/Dec/2024 20:09:47] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 20:09:48] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:09:48] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:09:48] "GET /chat HTTP/1.1" 200 17339
+[06/Dec/2024 20:09:49] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 20:09:50] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:09:54] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:09:54] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:09:54] "GET /chat HTTP/1.1" 200 17339
+[06/Dec/2024 20:13:30] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 20:13:30] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:13:30] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:13:31] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:13:31] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:13:31] "GET /chat HTTP/1.1" 200 17339
+[06/Dec/2024 20:13:50] "GET /chat HTTP/1.1" 200 17339
+[06/Dec/2024 20:13:51] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 20:14:43] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 20:14:43] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:14:44] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:14:45] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:14:45] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:14:45] "GET /chat HTTP/1.1" 200 17386
+[06/Dec/2024 20:14:51] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 20:14:51] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:14:51] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:14:53] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:14:53] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:14:53] "GET /chat HTTP/1.1" 200 17339
+[06/Dec/2024 20:17:12] "GET /chat HTTP/1.1" 200 17339
+[06/Dec/2024 20:17:12] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 20:17:12] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:28:49] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:28:49] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 20:28:51] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:28:51] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:28:51] "GET /chat HTTP/1.1" 200 17339
+[06/Dec/2024 20:29:38] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 20:29:38] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:29:38] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:29:39] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:29:39] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:29:39] "GET /chat HTTP/1.1" 200 17327
+[06/Dec/2024 20:29:44] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 20:29:44] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:29:44] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:29:45] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:29:45] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:29:45] "GET /chat HTTP/1.1" 200 17386
+[06/Dec/2024 20:29:47] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 20:29:47] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:29:47] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:29:48] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:29:48] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:29:48] "GET /chat HTTP/1.1" 200 17333
+[06/Dec/2024 20:29:50] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 20:29:50] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:29:50] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:29:50] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:29:50] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:29:51] "GET /chat HTTP/1.1" 200 17396
+[06/Dec/2024 20:29:52] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 20:29:52] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:29:52] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:29:52] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:29:53] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:29:53] "GET /chat HTTP/1.1" 200 17138
+[06/Dec/2024 20:29:54] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 20:29:54] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:29:54] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:29:55] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:29:55] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:29:55] "GET /chat HTTP/1.1" 200 17386
+[06/Dec/2024 20:29:56] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 20:29:56] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:29:56] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:29:57] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:29:57] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:29:57] "GET /chat HTTP/1.1" 200 17327
+[06/Dec/2024 20:29:58] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 20:29:58] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:29:58] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:29:59] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:29:59] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:30:00] "GET /chat HTTP/1.1" 200 17333
+[06/Dec/2024 20:32:16] "GET /chat HTTP/1.1" 200 17331
+[06/Dec/2024 20:32:16] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 20:32:45] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:32:45] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 20:32:46] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:32:46] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:32:46] "GET /chat HTTP/1.1" 200 17327
+[06/Dec/2024 20:33:11] "GET /chat HTTP/1.1" 200 17319
+[06/Dec/2024 20:33:11] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 20:33:19] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:33:19] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 20:33:21] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:33:21] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:33:21] "GET /chat HTTP/1.1" 200 17138
+[06/Dec/2024 20:33:25] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 20:33:25] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:33:26] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:33:27] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:33:27] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:33:27] "GET /chat HTTP/1.1" 200 17138
+[06/Dec/2024 20:33:27] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 20:33:27] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:33:27] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:33:28] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:33:28] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:33:28] "GET /chat HTTP/1.1" 200 17386
+[06/Dec/2024 20:33:33] "GET /chat HTTP/1.1" 200 17386
+[06/Dec/2024 20:33:35] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 20:33:35] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:33:35] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:33:36] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:33:36] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:33:36] "GET /chat HTTP/1.1" 200 17319
+[06/Dec/2024 20:33:39] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 20:33:39] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:33:39] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:33:40] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:33:40] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:33:40] "GET /chat HTTP/1.1" 200 17327
+[06/Dec/2024 20:33:44] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 20:33:44] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:33:44] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:33:45] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:33:45] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:33:45] "GET /chat HTTP/1.1" 200 17396
+[06/Dec/2024 20:33:54] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 20:33:54] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:33:54] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:33:55] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:33:55] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:33:55] "GET /chat HTTP/1.1" 200 17319
+[06/Dec/2024 20:34:01] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 20:34:01] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:34:01] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:34:03] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:34:03] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:34:03] "GET /chat HTTP/1.1" 200 17319
+[06/Dec/2024 20:34:19] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 20:34:19] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:34:19] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:34:21] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:34:21] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:34:21] "GET /chat HTTP/1.1" 200 17322
+[06/Dec/2024 20:34:24] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 20:34:24] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:34:24] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:34:26] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:34:26] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:34:26] "GET /chat HTTP/1.1" 200 17386
+[06/Dec/2024 20:34:28] "GET /chat HTTP/1.1" 200 17386
+[06/Dec/2024 20:34:30] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 20:34:30] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:34:30] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:34:31] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:34:31] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:34:31] "GET /chat HTTP/1.1" 200 17322
+[06/Dec/2024 20:34:32] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 20:34:32] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:34:32] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:34:33] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:34:33] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:34:33] "GET /chat HTTP/1.1" 200 17396
+[06/Dec/2024 20:34:37] "GET /chat HTTP/1.1" 200 17396
+[06/Dec/2024 20:34:37] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 20:34:39] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 20:34:39] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:34:39] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:34:40] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:34:40] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:34:40] "GET /chat HTTP/1.1" 200 17322
+[06/Dec/2024 20:34:45] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 20:34:45] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:34:45] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:34:46] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:34:46] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:34:47] "GET /chat HTTP/1.1" 200 17396
+[06/Dec/2024 20:34:51] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 20:34:51] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:34:51] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:34:52] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:34:52] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:34:52] "GET /chat HTTP/1.1" 200 17327
+[06/Dec/2024 20:34:54] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 20:34:54] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:34:54] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:34:55] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:34:55] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:34:55] "GET /chat HTTP/1.1" 200 17386
+[06/Dec/2024 20:34:57] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 20:34:57] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:34:58] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:34:59] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:34:59] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:34:59] "GET /chat HTTP/1.1" 200 17138
+[06/Dec/2024 20:35:03] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 20:35:03] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:35:03] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:35:06] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:35:06] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:35:06] "GET /chat HTTP/1.1" 200 17322
+[06/Dec/2024 20:35:07] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 20:35:07] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:35:07] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:35:22] "GET /chat HTTP/1.1" 200 8256
+Not Found: /favicon.ico
+[06/Dec/2024 20:35:22] "GET /favicon.ico HTTP/1.1" 404 3089
+Not Found: /apple-touch-icon.png
+[06/Dec/2024 20:35:31] "GET /apple-touch-icon.png HTTP/1.1" 404 3116
+Not Found: /apple-touch-icon-precomposed.png
+Not Found: /favicon.ico
+[06/Dec/2024 20:35:31] "GET /apple-touch-icon-precomposed.png HTTP/1.1" 404 3152
+[06/Dec/2024 20:35:31] "GET /favicon.ico HTTP/1.1" 404 3089
+Not Found: /apple-touch-icon-120x120-precomposed.png
+[06/Dec/2024 20:35:34] "GET /apple-touch-icon-120x120-precomposed.png HTTP/1.1" 404 3176
+Not Found: /apple-touch-icon-120x120.png
+[06/Dec/2024 20:35:35] "GET /apple-touch-icon-120x120.png HTTP/1.1" 404 3140
+Not Found: /apple-touch-icon.png
+[06/Dec/2024 20:35:35] "GET /apple-touch-icon.png HTTP/1.1" 404 3116
+Not Found: /apple-touch-icon.png
+[06/Dec/2024 20:35:35] "GET /apple-touch-icon.png HTTP/1.1" 404 3116
+[06/Dec/2024 20:35:37] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:35:41] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:35:41] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:35:41] "GET /chat HTTP/1.1" 200 17386
+[06/Dec/2024 20:35:46] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:35:46] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:35:46] "GET /chat HTTP/1.1" 200 17138
+[06/Dec/2024 20:35:50] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:35:50] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:35:50] "GET /chat HTTP/1.1" 200 17327
+[06/Dec/2024 20:35:53] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:35:54] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:35:54] "GET /chat HTTP/1.1" 200 17322
+[06/Dec/2024 20:35:56] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:35:56] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:35:56] "GET /chat HTTP/1.1" 200 17396
+[06/Dec/2024 20:36:10] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:36:10] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:36:10] "GET /chat HTTP/1.1" 200 17322
+[06/Dec/2024 20:36:18] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:36:18] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:36:19] "GET /chat HTTP/1.1" 200 17396
+[06/Dec/2024 20:36:29] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:36:29] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:36:29] "GET /chat HTTP/1.1" 200 17327
+[06/Dec/2024 20:36:35] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:36:36] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:36:36] "GET /chat HTTP/1.1" 200 17386
+[06/Dec/2024 20:36:47] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:36:47] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:36:48] "GET /chat HTTP/1.1" 200 17396
+[06/Dec/2024 20:36:53] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:36:53] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:36:53] "GET /chat HTTP/1.1" 200 17396
+[06/Dec/2024 20:37:25] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:37:25] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:37:25] "GET /chat HTTP/1.1" 200 17386
+[06/Dec/2024 20:37:35] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:37:35] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:37:35] "GET /chat HTTP/1.1" 200 17138
+[06/Dec/2024 20:37:40] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:37:40] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:37:41] "GET /chat HTTP/1.1" 200 17327
+[06/Dec/2024 20:37:45] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:37:45] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:37:45] "GET /chat HTTP/1.1" 200 17322
+[06/Dec/2024 20:37:49] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:37:49] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:37:49] "GET /chat HTTP/1.1" 200 17396
+[06/Dec/2024 20:38:59] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 20:38:59] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:38:59] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:39:01] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:39:02] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:39:02] "GET /chat HTTP/1.1" 200 17391
+[06/Dec/2024 20:39:08] "GET /chat HTTP/1.1" 200 17391
+[06/Dec/2024 20:41:45] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 20:41:45] "GET / HTTP/1.1" 200 8256
+[06/Dec/2024 20:41:45] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:41:52] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:41:52] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:41:52] "GET /chat HTTP/1.1" 200 17386
+[06/Dec/2024 20:42:43] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:43:43] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:43:44] "GET /chat HTTP/1.1" 200 8256
+[06/Dec/2024 20:44:52] "GET /chat HTTP/1.1" 200 8113
+[06/Dec/2024 20:44:53] "GET /chat HTTP/1.1" 200 8113
+[06/Dec/2024 20:44:57] "GET /chat HTTP/1.1" 200 17386
+[06/Dec/2024 20:45:00] "GET /chat HTTP/1.1" 200 17386
+[06/Dec/2024 20:45:06] "GET / HTTP/1.1" 200 8113
+[06/Dec/2024 20:45:10] "GET / HTTP/1.1" 200 8113
+[06/Dec/2024 20:45:12] "GET / HTTP/1.1" 200 8113
+[06/Dec/2024 20:45:18] "GET /chat HTTP/1.1" 200 8113
+[06/Dec/2024 20:45:22] "GET /chat HTTP/1.1" 200 8113
+[06/Dec/2024 20:46:04] "GET /chat HTTP/1.1" 200 8113
+[06/Dec/2024 20:46:06] "GET /chat HTTP/1.1" 200 8113
+[06/Dec/2024 20:46:12] "GET / HTTP/1.1" 200 8113
+[06/Dec/2024 20:46:25] "GET /chat HTTP/1.1" 200 8113
+[06/Dec/2024 20:47:22] "GET /chat HTTP/1.1" 200 8138
+[06/Dec/2024 20:47:23] "GET /chat HTTP/1.1" 200 8138
+[06/Dec/2024 20:47:23] "GET /chat HTTP/1.1" 200 8138
+[06/Dec/2024 20:47:27] "GET / HTTP/1.1" 200 8138
+[06/Dec/2024 20:47:29] "GET / HTTP/1.1" 200 8138
+[06/Dec/2024 20:48:35] "GET /chat HTTP/1.1" 200 8149
+[06/Dec/2024 20:48:36] "GET /chat HTTP/1.1" 200 8149
+[06/Dec/2024 20:48:36] "GET /chat HTTP/1.1" 200 8149
+[06/Dec/2024 20:48:38] "GET / HTTP/1.1" 200 8149
+[06/Dec/2024 20:49:00] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:49:00] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:49:01] "GET /chat HTTP/1.1" 200 17391
+[06/Dec/2024 20:49:03] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:49:03] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:49:03] "GET /chat HTTP/1.1" 200 17322
+[06/Dec/2024 20:49:05] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:49:06] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:49:06] "GET /chat HTTP/1.1" 200 17327
+[06/Dec/2024 20:49:08] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:49:08] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:49:08] "GET /chat HTTP/1.1" 200 17386
+[06/Dec/2024 20:49:10] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:49:10] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:49:10] "GET /chat HTTP/1.1" 200 17138
+[06/Dec/2024 20:49:12] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:49:12] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:49:12] "GET /chat HTTP/1.1" 200 17138
+[06/Dec/2024 20:49:17] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:49:17] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:49:17] "GET /chat HTTP/1.1" 200 17386
+[06/Dec/2024 20:49:22] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:49:22] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:49:23] "GET /chat HTTP/1.1" 200 17327
+[06/Dec/2024 20:49:27] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:49:28] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:49:28] "GET /chat HTTP/1.1" 200 17322
+[06/Dec/2024 20:49:32] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 20:49:33] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 20:49:33] "GET /chat HTTP/1.1" 200 17391
+/home/ec2-user/.local/lib/python3.11/site-packages/langchain/llms/__init__.py:549: LangChainDeprecationWarning: Importing LLMs from langchain is deprecated. Importing from langchain will no longer be supported as of langchain==0.2.0. Please import from langchain-community instead:
+
+`from langchain_community.llms import OpenAI`.
+
+To install langchain-community run `pip install -U langchain-community`.
+  warnings.warn(
+[06/Dec/2024 20:49:42] "POST /chat HTTP/1.1" 200 396
+[06/Dec/2024 20:49:55] "GET /chat HTTP/1.1" 200 17391
+[06/Dec/2024 22:01:54] "GET /chat HTTP/1.1" 200 17391
+[06/Dec/2024 22:02:01] "POST /clear HTTP/1.1" 302 0
+[06/Dec/2024 22:02:01] "GET /chat HTTP/1.1" 200 8149
+[06/Dec/2024 22:42:44] "GET /chat HTTP/1.1" 200 8149
+Not Found: /favicon.ico
+[06/Dec/2024 22:42:45] "GET /favicon.ico HTTP/1.1" 404 3089
+[06/Dec/2024 22:42:51] "POST /index HTTP/1.1" 302 0
+[06/Dec/2024 22:42:51] "GET /index HTTP/1.1" 302 0
+[06/Dec/2024 22:42:51] "GET /chat HTTP/1.1" 200 17386
+[06/Dec/2024 22:43:24] "GET /chat HTTP/1.1" 200 17386
+/home/ec2-user/.local/lib/python3.11/site-packages/langchain/llms/__init__.py:549: LangChainDeprecationWarning: Importing LLMs from langchain is deprecated. Importing from langchain will no longer be supported as of langchain==0.2.0. Please import from langchain-community instead:
+
+`from langchain_community.llms import OpenAI`.
+
+To install langchain-community run `pip install -U langchain-community`.
+  warnings.warn(
+[06/Dec/2024 22:44:14] "POST /chat HTTP/1.1" 200 695
