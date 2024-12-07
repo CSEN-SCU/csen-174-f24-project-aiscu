@@ -28,11 +28,10 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['cfa6-34-207-163-88.ngrok-free.app','1895-34-207-163-88.ngrok-free.app', 'd76b-34-207-163-88.ngrok-free.app','127.0.0.1']
+ALLOWED_HOSTS = ['9224-34-207-163-88.ngrok-free.app','127.0.0.1']
 CSRF_TRUSTED_ORIGINS = [
-    'https://1895-34-207-163-88.ngrok-free.app',
-    'https://d76b-34-207-163-88.ngrok-free.app'
     # Add any other trusted domains here
+    'https://9224-34-207-163-88.ngrok-free.app'
 ]
 
 # Application definition

@@ -262,13 +262,22 @@
       });
   });
 
+
   function copyText(button, text) {
-    navigator.clipboard.writeText(text);
+    if (button.disabled) return;
+    button.disabled = true;
     var save = button.innerHTML;
-    button.style.fontSize='30px';
-    button.innerHTML='&#10003;'
-    setTimeout(() => {button.innerHTML=save}, 3000);
+
+    navigator.clipboard.writeText(text).then(() => {
+      button.style.fontSize='30px';
+      button.innerHTML='&#10003;'
+      setTimeout(() => {button.innerHTML=save; button.disabled=false;}, 3000);
+    }).catch((err) => {
+      console.error('Failed to copy text: ', err);
+      button.disabled = false;
+    });
   }
+
 
   let clicked=false;
 
@@ -297,13 +306,12 @@
   });
 
   function setPrompt(promptText) {
-    document.getElementById('userPrompt').value = promptText;
     setTimeout(()=>document.getElementById('userPrompt').value = promptText, 0);
   }
 
   function surpriseSuggestions() {
     const randomSuggestion = surprisePrompts[Math.floor(Math.random() * surprisePrompts.length)];
-    document.getElementById('userPrompt').value = randomSuggestion;
+    setTimeout(()=>document.getElementById('userPrompt').value = randomSuggestion, 0);
   }
 
 </script>
