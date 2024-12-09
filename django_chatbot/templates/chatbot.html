@@ -163,7 +163,7 @@
       {% endblock %}
     </div>
     <div class="input-group">
-      <input id="userPrompt" type="text" class="form-control message-input" placeholder="Type your message..." />
+      <textarea id="userPrompt"  type="text" class="form-control message-input" placeholder="Type your message..." onkeydown="newline(event)" style="resize: none; scroll-padding-bottom: 50px;"></textarea>
       <div class="input-group-append">
         <button id="send-btn" type="submit" class="btn btn-primary btn-send"><i class="bi bi-send"></i></button>
       </div>
@@ -179,6 +179,15 @@
   const messageInput = document.querySelector(".message-input");
   const sendButton = document.getElementById("send-btn");
   const suggestions = document.getElementById("suggestions");
+
+  function newline(event) {
+    if (!("ontouchstart" in document.documentElement))
+      if (event.keyCode == 13 && !event.shiftKey) {
+        event.preventDefault();
+        const e = new Event("submit");
+        messageForm.dispatchEvent(e);
+      }
+  }
 
   messageForm.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -252,10 +261,10 @@
 	const shareButtons = document.createElement('div');
 	shareButtons.style.paddingLeft = '5px';
 	shareButtons.innerHTML=`
-      <button onclick="copyText(this, \`${response}\`)" style="border:none; font-size:35px; width:30.75px">
+      <button onclick="copyText(this, \`${response}\`)" style="border:none; font-size:35px; width:30.75px; background-color: transparent; margin:0 !important; padding:0 !important; padding-bottom: 10px">
         <i class="fa-regular fa-clipboard" style="font-size: 25px;"></i>
       </button>
-      <button onclick="shareText(this, \`${response}\`)" style="border:none; font-size:35px;">
+      <button onclick="shareText(this, \`${response}\`)" style="border:none; font-size:35px; background-color: transparent; margin:0 !important; padding:0 !important; padding-bottom: 10px">
         <i class="bi bi-share" style="font-size: 20px;"></i>
       </button>
       `;
